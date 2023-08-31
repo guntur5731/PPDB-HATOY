@@ -1,0 +1,7 @@
+export const login = "/login"
+export const jurusan = "/jurusan"
+export const kelas = "/kelas"
+export const tahunAjaran = "/tahun-ajaran"
+export const jenisPembayaran = "/jenis-pembayaran"
+export const masterBayaran = "/master-bayaran"
+export const masterBayaranList = "/master-bayaran/list"
