@@ -105,6 +105,14 @@ class PesertaServices
         $uuid = Auth::user()->userUuid;
         $userId = Auth::user()->id;
 
+        $checkNik = $this->PesertaRepository->checkNik($request->nik, $userId);
+        if($checkNik){
+          $response->setCode(200);
+          $response->setStatus(false);
+          $response->setMessage("Nik Sudah Terdaftar");
+          return $response->sendResponse();
+        }
+
         if($request->id){
           $userId = $request->id;
         }

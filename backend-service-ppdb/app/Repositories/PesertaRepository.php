@@ -31,6 +31,10 @@ class PesertaRepository
         return DB::table('users')->where('email', $email)->first();
     }
 
+    public function checkNik($nik, $id){
+        return DB::table('biodata')->where('nik', $nik)->where('id', '!=', $id)->first();
+    }
+
     public function verifikasi($data)
     {
         return DB::table('users')->whereIn('id', $data)->update(array('is_verifikasi' => 1));

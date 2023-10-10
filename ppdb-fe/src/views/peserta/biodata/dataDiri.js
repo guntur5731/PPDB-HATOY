@@ -44,6 +44,13 @@ export default function dataDiri({ userData }) {
         post(`${detailPeserta}?update=biodata${paramss}`, data).then((res) => {
             if (res && res.data && res.data.response && res.data.response.status) {
                 toast.success(res.data.response.message)
+            } else {
+                if (res.data.response.message.includes("Nik Sudah Terdaftar")) {
+                    setValidation({...validation,
+                        nik: "Nik Sudah Terdaftar"
+                    })
+                }
+                toast.warn(res.data.response.message)
             }
             setLoading(false)
         }).catch((err) => {
