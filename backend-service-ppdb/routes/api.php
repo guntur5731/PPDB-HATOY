@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\GelombangController;
 use App\Http\Controllers\Api\NilaiController;
 use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\LandingController;
+use App\Http\Controllers\Api\DownloadController;
 
 Route::controller(LandingController::class)->group(function(){
     Route::get('landing', 'index');
@@ -24,6 +25,10 @@ Route::controller(PesertaController::class)->group(function(){
     Route::post('lupa-password', 'lupaPassword');
     Route::post('chek-token', 'checkToken');
     Route::post('change-password', 'changePassword');
+});
+
+Route::controller(DownloadController::class)->group(function(){
+    Route::get('download-file', 'index');
 });
 
 Route::middleware('auth:sanctum')->group( function () {
