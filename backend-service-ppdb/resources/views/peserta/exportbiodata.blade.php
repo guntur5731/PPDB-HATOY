@@ -28,7 +28,7 @@
                                 <center>
                                     <img width="250"
                                         src="" ><br />
-                                    <b style="font-size: 16px;">YAYASAN AMAL IKHLAS</b><br />
+                                    <b style="font-size: 16px;">YAYASAN AMAL IKHLAS ABADI</b><br />
                                     <b style="font-size: 23px; color: #180892;">SMP IT HAYATAN THAYYIBAH</b><br />
                                     <b style="font-size: 16px;">TERAKREDITASI “A” (UNGGUL) NPSN 69953945</b><br />
                                     <span style="font-size: 12px;">Jl. Karamat-Karangtengah, Kel. Karangtengah Kec.
