@@ -24,9 +24,9 @@ class DownloadServices
             )->join('biodata', 'biodata.users', '=', 'users.id')
             ->where('users.useruuid', $data)->first();
         $biaya = DB::table('biaya')->select('biaya_pendaftaran')->where('id_bayar', 1)->first();
-        // $pdf = PDF::loadView('peserta.exportbiodata', compact("biodata", "biaya"));
-        // return $pdf->download('export.pdf');
+        $pdf = PDF::loadView('peserta.exportbiodata', compact("biodata", "biaya"));
+        return $pdf->download('export.pdf');
             // dd($biodata);
-        return view('peserta.exportbiodata', compact("biodata", "biaya"));
+        // return view('peserta.exportbiodata', compact("biodata", "biaya"));
     }
 }
