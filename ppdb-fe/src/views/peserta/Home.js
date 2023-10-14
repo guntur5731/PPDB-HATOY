@@ -38,12 +38,12 @@ export default function Home() {
         <Col xl='6' md='6' sm='12' className='cursor-pointer' onClick={() => {
           history.push('/biodata')
         }}>
-          {isBio === 1 && <StatsVertical icon={<Icon.Check size={21} />} color='success' stats='Biodata' statTitle='Biodata Sudah Lengkap' />}
-          {isBio === 0 && <StatsVertical icon={<Icon.Info size={21} />} color='danger' stats='Biodata' statTitle='Harap Melengkapi Biodata Terlebih Dahulu' />}
+          {(isBio === 1 || isBio === "1") && <StatsVertical icon={<Icon.Check size={21} />} color='success' stats='Biodata' statTitle='Biodata Sudah Lengkap' />}
+          {(isBio === 0 || isBio === "0") && <StatsVertical icon={<Icon.Info size={21} />} color='danger' stats='Biodata' statTitle='Harap Melengkapi Biodata Terlebih Dahulu' />}
         </Col>
         <Col xl='6' md='6' sm='12'>
-          {isVerifikasi === 1 && <StatsVertical icon={<Icon.Check size={21} />} color='success' stats='Verifikasi' statTitle='Sudah Terverifikasi' />}
-          {isVerifikasi === 0 && <StatsVertical icon={<Icon.X size={21} />} color='warning' stats='Verifikasi' statTitle='Belum Terverifikasi' />}
+          {(isVerifikasi === 1 || isVerifikasi === "1") && <StatsVertical icon={<Icon.Check size={21} />} color='success' stats='Verifikasi' statTitle='Sudah Terverifikasi' />}
+          {(isVerifikasi === 0 || isVerifikasi === "0") && <StatsVertical icon={<Icon.X size={21} />} color='warning' stats='Verifikasi' statTitle='Belum Terverifikasi' />}
         </Col>
         <Col xl='12' md='12' sm='12'>
           {isTest === "Lulus" && <StatsVertical icon={<Icon.Book size={21} />} color='success' stats='Status Kelulusan' statTitle={isTest} />}
