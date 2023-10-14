@@ -24,3 +24,5 @@ export const detailUser = "/get-peserta"
 export const uploadExcel = "/upload-file"
 export const updateBiodata = "/update-bio"
 export const jumlahPerGelombang = "/listBygelombang"
+//Download file
+export const donwloadbiodata = "/download-file"

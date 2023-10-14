@@ -132,6 +132,7 @@ class PesertaServices
           $peserta["tanggal_lahir"] = $request->tanggalLahir;
           $peserta["jenis_kelamin"] = $request->jenisKelamin;
           $peserta['asal_sekolah'] = $request->asalSekolah;
+          $peserta['alamat_asal_sekolah'] = $request->alamatAsalSekolah;
           $peserta["users"] = $userId;
           $bio["biodata"] = 1;
         }else if($request->update == "datakeluarga"){
@@ -152,6 +153,7 @@ class PesertaServices
           $peserta["alamat"] = $request->alamat;
           $peserta["rt"] = $request->rt;
           $peserta["rw"] = $request->rw;
+          $peserta["dusun"] = $request->dusun;
           $peserta["kelurahan"] = $request->kelurahan;
           $peserta["kecamatan"] = $request->kecamatan;
           $peserta["kota"] = $request->kota;
@@ -341,6 +343,7 @@ class PesertaServices
   public function downloadPeserta($request)
   {
       $title = "Export Peserta";
+      session(['reqData' => $request->type]);
       if ($request->type === "hMOyFkfc8jKmu5aJkHmj/A==") {
         return Excel::download(new ExportAssemblerExportSiswa, 'peserta.xlsx');
       } else if ($request->type === "V7oI9liYiTE7PqQX7QAVug==") {

@@ -15,36 +15,39 @@ use Illuminate\Support\Facades\Session;
 class ExportAssemblerExportSiswa implements FromView
 {
     use Exportable;
-    
+    protected $requestData;
+
     public function view(): View
     {
+        dd(session('reqData'));
         $title = "Export Peserta";
         $cek = $this->queryPeserta();
-        
-        $colums = array("NO REGISTRASI", 
-                "GELOMBANG", 
-                "NISN",
-                "ASAL SEKOLAH",
-                "NIK",
-                "NAMA LENGKAP",
-                "JENIS KELAMIN",
-                "TEMPAT, TANGGAL LAHIR",
-                "NAMA AYAH",
-                "NAMA IBU",
-                "NAMA WALI",
-                "PEKERJAAN AYAH",
-                "PEKERJAAN IBU",
-                "PENDIDIKAN AYAH",
-                "PENDIDIKAN IBU",
-                "PENGHASILAN ORANGTUA",
-                "ALAMAT",
-                "RT",
-                "RW",
-                "KELURAHAN/DESA",
-                "KECAMATAN",
-                "KOTA/KABUPATEN",
-                "KODE POS"
-                );
+
+        $colums = array(
+            "NO REGISTRASI",
+            "GELOMBANG",
+            "NISN",
+            "ASAL SEKOLAH",
+            "NIK",
+            "NAMA LENGKAP",
+            "JENIS KELAMIN",
+            "TEMPAT, TANGGAL LAHIR",
+            "NAMA AYAH",
+            "NAMA IBU",
+            "NAMA WALI",
+            "PEKERJAAN AYAH",
+            "PEKERJAAN IBU",
+            "PENDIDIKAN AYAH",
+            "PENDIDIKAN IBU",
+            "PENGHASILAN ORANGTUA",
+            "ALAMAT",
+            "RT",
+            "RW",
+            "KELURAHAN/DESA",
+            "KECAMATAN",
+            "KOTA/KABUPATEN",
+            "KODE POS"
+        );
         $listData = $cek;
         return view('exportSiswa', compact('title', 'colums', 'listData'));
     }
@@ -52,13 +55,15 @@ class ExportAssemblerExportSiswa implements FromView
     public function queryPeserta()
     {
         return DB::table("users")
-        ->select("users.id_registrasi as noRegistrasi",
-                    "users.nisn",
-                    "users.gelombang",
-                    "users.name as namaLengkap",
-                    "biodata.*")
-        ->leftJoin('biodata', 'biodata.userUuid', '=', 'users.userUuid')
-        ->where('users.is_verifikasi', '!=', 2)
-        ->get();
+            ->select(
+                "users.id_registrasi as noRegistrasi",
+                "users.nisn",
+                "users.gelombang",
+                "users.name as namaLengkap",
+                "biodata.*"
+            )
+            ->leftJoin('biodata', 'biodata.userUuid', '=', 'users.userUuid')
+            ->where('users.is_verifikasi', '!=', 2)
+            ->get();
     }
 }

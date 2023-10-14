@@ -19,7 +19,8 @@ export default function dataDiri({ userData }) {
         jenisKelamin: "",
         tempatLahir: "",
         tanggalLahir: "",
-        asalSekolah: ""
+        asalSekolah: "",
+        alamatAsalSekolah: ""
     })
     const [validation, setValidation] = useState({
         nik: "",
@@ -27,7 +28,8 @@ export default function dataDiri({ userData }) {
         jenisKelamin: "",
         tempatLahir: "",
         tanggalLahir: "",
-        asalSekolah: ""
+        asalSekolah: "",
+        alamatAsalSekolah: ""
     })
 
     const [param, setParams] = useState("")
@@ -65,7 +67,8 @@ export default function dataDiri({ userData }) {
             data.jenisKelamin === "" ||
             data.tempatLahir === "" ||
             data.tanggalLahir === "" ||
-            data.asalSekolah === "") {
+            data.asalSekolah === "" ||
+            data.alamatAsalSekolah === "") {
             setValidation({
                 ...validation,
                 nik: data.nik === "" && "Kolom wajib diisi",
@@ -73,7 +76,8 @@ export default function dataDiri({ userData }) {
                 jenisKelamin: data.jenisKelamin === "" && "Kolom wajib diisi",
                 tempatLahir: data.tempatLahir === "" && "Kolom wajib diisi",
                 tanggalLahir: data.tanggalLahir === "" && "Kolom wajib diisi",
-                asalSekolah: data.asalSekolah === "" && "Kolom wajib diisi"
+                asalSekolah: data.asalSekolah === "" && "Kolom wajib diisi",
+                alamatAsalSekolah: data.alamatAsalSekolah === "" && "Kolom wajib diisi"
             })
         } else {
             onSubmit()
@@ -98,7 +102,8 @@ export default function dataDiri({ userData }) {
                         jenisKelamin: datas.jenis_kelamin !== null ? datas.jenis_kelamin : "",
                         tempatLahir: datas.tempat_lahir !== null ? datas.tempat_lahir : "",
                         tanggalLahir: datas.tanggal_lahir !== null ? new Date(datas.tanggal_lahir) : "",
-                        asalSekolah: datas.asal_sekolah !== null ? datas.asal_sekolah : ""
+                        asalSekolah: datas.asal_sekolah !== null ? datas.asal_sekolah : "",
+                        alamatAsalSekolah: datas.alamat_asal_sekolah !== null ? datas.alamat_asal_sekolah : ""
                     })
                 }
                 setLoading(false)
@@ -247,6 +252,22 @@ export default function dataDiri({ userData }) {
                                     })
                                 }} />
                             <Label style={styles}>{validation.asalSekolah}</Label>
+                        </Col>
+                        <Col sm={12} md={12}>
+                            <Label>Alamat Asal Sekolah <span style={{ color: "red" }}>*</span></Label>
+                            <Input type='textarea' value={data.alamatAsalSekolah} placeholder='Alamat Asal Sekolah'
+                                className={validation.alamatAsalSekolah.length > 0 && 'is-invalid'}
+                                onChange={(e) => {
+                                    setData({
+                                        ...data,
+                                        alamatAsalSekolah: e.target.value
+                                    })
+                                    setValidation({
+                                        ...validation,
+                                        alamatAsalSekolah: ""
+                                    })
+                                }} />
+                            <Label style={styles}>{validation.alamatAsalSekolah}</Label>
                         </Col>
                         <Col sm={12} md={12}>
                             <Button disabled={loading} onClick={() => {

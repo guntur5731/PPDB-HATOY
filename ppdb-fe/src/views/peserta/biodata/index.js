@@ -8,12 +8,12 @@ import DataAlamat from './dataAlamat'
 import DataKeluarga from './dataKeluarga'
 import DataBerkas from './dataBerkas'
 import Avatar from '@components/avatar'
-import { BASE_API_IMAGE, getUser } from '../../../configs/config'
+import { BASE_API, BASE_API_IMAGE, getUser } from '../../../configs/config'
 import { useLocation } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { get, post } from '../../../configs/apiService'
-import { detailUser, updateBiodata } from '../../../configs/apiurl'
+import { detailUser, donwloadbiodata, updateBiodata } from '../../../configs/apiurl'
 import { toast } from 'react-toastify'
 import InputPasswordToggle from '@components/input-password-toggle'
 const MySwal = withReactContent(Swal)
@@ -258,6 +258,10 @@ export default function index() {
       }
     }
   }
+  const donwloadBerkas = () => {
+    const usersData = getUser()
+    window.open(`${BASE_API + donwloadbiodata}?data=${usersData.usersId}`)
+  }
   return (
     <div>
       {users !== null &&
@@ -298,6 +302,7 @@ export default function index() {
                         </Button> : <Button color='warning' className='mt-1' onClick={() => setModalResetPassword(!modalResetPassword)} size={"sm"}>
                           Edit Password
                         </Button>}
+                        <Button color='info' size='sm' className='mt-1' onClick={() => donwloadBerkas()}>Download Biodata</Button>
                       </div>
                     </div>
                   </div>

@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 import { Button, Card, CardBody, Col, Input, Label, Row, Spinner } from 'reactstrap'
 import { get, post } from '../../../configs/apiService'
 import { detailPeserta } from '../../../configs/apiurl'
+import Select from 'react-select'
 const styles = {
   fontSize: "12px",
   color: "red"
@@ -10,6 +11,16 @@ const styles = {
 
 export default function dataKeluarga({ userData }) {
   const [loading, setLoading] = useState(false)
+  const pendidikan = [
+    { label: "SD/MI", value: "SD" },
+    { label: "SMP/MTS", value: "SMP" },
+    { label: "SMA/MA/SMK", value: "SMA" },
+    { label: "Diploma", value: "Diploma" },
+    { label: "S1", value: "S1" },
+    { label: "S2", value: "S1" },
+    { label: "S3", value: "S1" },
+    { label: "Lainnya", value: "Lainnya" }
+  ]
   const [data, setData] = useState({
     nama_ayah: "",
     nama_ibu: "",
@@ -180,7 +191,7 @@ export default function dataKeluarga({ userData }) {
                 }}
               />
             </Col>
-            <Col sm={12} md={12} >
+            <Col sm={12} md={12} className='mt-1'>
               <Label>No. Hp Ayah</Label>
               <Input type='text' placeholder='No. Hp Ayah'
                 value={data.no_hp}
@@ -195,7 +206,7 @@ export default function dataKeluarga({ userData }) {
                   }
                 }} />
             </Col>
-            <Col sm={12} md={12} >
+            <Col sm={12} md={12} className='mt-1'>
               <Label>No. Hp Ibu</Label>
               <Input type='text' placeholder='No. Hp Ibu'
                 value={data.no_hp1}
@@ -210,7 +221,7 @@ export default function dataKeluarga({ userData }) {
                   }
                 }} />
             </Col>
-            <Col sm={12} md={12} >
+            <Col sm={12} md={12} className='mt-1'>
               <Label>Pekerjaan Ayah</Label>
               <Input type='text' placeholder='Pekerjaan Ayah'
                 value={data.pekerjaan_ayah}
@@ -221,7 +232,7 @@ export default function dataKeluarga({ userData }) {
                   })
                 }} />
             </Col>
-            <Col sm={12} md={12} >
+            <Col sm={12} md={12} className='mt-1'>
               <Label>Pekerjaan Ibu</Label>
               <Input type='text' placeholder='Pekerjaan Ibu'
                 value={data.pekerjaan_ibu}
@@ -232,20 +243,48 @@ export default function dataKeluarga({ userData }) {
                   })
                 }} />
             </Col>
-            <Col sm={12} md={12} >
+            <Col sm={12} md={12} className='mt-1'>
               <Label>pendidikan Ayah</Label>
-              <Input type='text' placeholder='pendidikan Ayah'
+              <Select
+                className={`react-select`}
+                classNamePrefix='select'
+                options={pendidikan}
+                maxMenuHeight={150}
+                value={pendidikan.find(item => item.value === data.pendidikan_ayah)}
+                onChange={(e) => {
+                  setData({
+                    ...data,
+                    pendidikan_ayah: e.value
+                  })
+                }}
+                placeholder="Pendidikan Ayah"
+              />
+              {/* <Input type='text' placeholder='pendidikan Ayah'
                 value={data.pendidikan_ayah}
                 onChange={(e) => {
                   setData({
                     ...data,
                     pendidikan_ayah: e.target.value
                   })
-                }} />
+                }} /> */}
             </Col>
-            <Col sm={12} md={12} >
+            <Col sm={12} md={12} className='mt-1'>
               <Label>pendidikan Ibu</Label>
-              <Input type='text' placeholder='pendidikan Ibu'
+              <Select
+                className={`react-select`}
+                classNamePrefix='select'
+                maxMenuHeight={150}
+                options={pendidikan}
+                value={pendidikan.find(item => item.value === data.pendidikan_ibu)}
+                onChange={(e) => {
+                  setData({
+                    ...data,
+                    pendidikan_ibu: e.value
+                  })
+                }}
+                placeholder="Pendidikan Ibu"
+              />
+              {/* <Input type='text' placeholder='pendidikan Ibu'
                 value={data.pendidikan_ibu}
                 onChange={(e) => {
                   setData({
@@ -253,9 +292,9 @@ export default function dataKeluarga({ userData }) {
                     pendidikan_ibu: e.target.value
                   })
                 }}
-              />
+              /> */}
             </Col>
-            <Col sm={12} md={12} >
+            <Col sm={12} md={12} className='mt-1'>
               <Label>Penghasilan Orang Tua</Label>
               <Input type='text' placeholder='Penghasilan Orang Tua'
                 value={data.penghasilan_ortu}

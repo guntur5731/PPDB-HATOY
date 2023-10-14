@@ -17,7 +17,8 @@ export default function dataAlamat({ userData }) {
         kelurahan: "",
         kecamatan: "",
         kota: "",
-        kode_pos: ""
+        kode_pos: "",
+        dusun : ""
     })
     const [validation, setValidation] = useState({
         kwn: "",
@@ -27,7 +28,8 @@ export default function dataAlamat({ userData }) {
         kelurahan: "",
         kecamatan: "",
         kota: "",
-        kode_pos: ""
+        kode_pos: "",
+        dusun : ""
     })
     const [param, setParams] = useState("")
 
@@ -49,7 +51,7 @@ export default function dataAlamat({ userData }) {
     }
 
     const handleValidasi = () => {
-        const { kwn, alamat, rt, rw, kelurahan, kecamatan, kota, kode_pos } = data
+        const { kwn, alamat, rt, rw, kelurahan, kecamatan, kota, kode_pos, dusun} = data
         if (kwn === "" ||
             alamat === "" ||
             rt === "" ||
@@ -57,7 +59,8 @@ export default function dataAlamat({ userData }) {
             kelurahan === "" ||
             kecamatan === "" ||
             kota === "" ||
-            kode_pos === "") {
+            kode_pos === "" ||
+            dusun === "") {
             setValidation({
                 kwn: data.kwn === "" && "Kolom wajib diisi",
                 alamat: data.alamat === "" && "Kolom wajib diisi",
@@ -66,7 +69,8 @@ export default function dataAlamat({ userData }) {
                 kelurahan: data.kelurahan === "" && "Kolom wajib diisi",
                 kecamatan: data.kecamatan === "" && "Kolom wajib diisi",
                 kota: data.kota === "" && "Kolom wajib diisi",
-                kode_pos: data.kode_pos === "" && "Kolom wajib diisi"
+                kode_pos: data.kode_pos === "" && "Kolom wajib diisi",
+                dusun: data.dusun === "" && "Kolom wajib diisi"
             })
         } else {
             onSubmit()
@@ -93,7 +97,8 @@ export default function dataAlamat({ userData }) {
                         kelurahan: datas.kelurahan !== null ? datas.kelurahan : "",
                         kecamatan: datas.kecamatan !== null ? datas.kecamatan : "",
                         kota: datas.kota !== null ? datas.kota : "",
-                        kode_pos: datas.kode_pos !== null ? datas.kode_pos : ""
+                        kode_pos: datas.kode_pos !== null ? datas.kode_pos : "",
+                        dusun : datas.dusun !== null ? datas.dusun : ""
                     })
                 }
                 setLoading(false)
@@ -189,6 +194,23 @@ export default function dataAlamat({ userData }) {
                                     })
                                 }} />
                             <Label style={styles}>{validation.rw}</Label>
+                        </Col>
+                        <Col sm={12} md={12} >
+                            <Label>Dusun</Label>
+                            <Input type='text' placeholder='Dusun'
+                                className={validation.dusun.length > 0 && 'is-invalid'}
+                                value={data.dusun}
+                                onChange={(e) => {
+                                    setData({
+                                        ...data,
+                                        dusun: e.target.value
+                                    })
+                                    setValidation({
+                                        ...validation,
+                                        dusun: ""
+                                    })
+                                }} />
+                            <Label style={styles}>{validation.dusun}</Label>
                         </Col>
                         <Col sm={12} md={12} >
                             <Label>Kelurahan/Desa</Label>

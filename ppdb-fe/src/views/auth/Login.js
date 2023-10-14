@@ -43,7 +43,8 @@ const LoginCover = () => {
               roleName: resp.user?.roleName,
               image: resp.user?.photo,
               nisn: resp.user?.nisn,
-              idReg: resp.user?.id_registrasi
+              idReg: resp.user?.id_registrasi,
+              usersId : resp.user?.userUuid
             }))
             handleAccesstoken(resp.token)
             window.location.replace("/beranda")

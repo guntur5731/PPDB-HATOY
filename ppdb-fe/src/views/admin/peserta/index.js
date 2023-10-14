@@ -402,15 +402,15 @@ export default function index() {
                       Download
                     </DropdownToggle>
                     <DropdownMenu>
-                      <DropdownItem tag='a' onClick={() => toast.warning("COMING SOON")}>
+                      {/* <DropdownItem tag='a' onClick={() => toast.warning("COMING SOON")}>
                         CSV
-                      </DropdownItem>
+                      </DropdownItem> */}
                       <DropdownItem tag='a' target="_blank" href={`${BASE_API_DOWNLOAD}${downloadPeserta}?type=${CODE_EXPORT_EXCEL}`}>
                         Excel
                       </DropdownItem>
-                      <DropdownItem tag='a' onClick={() => toast.warning("COMING SOON")}>
+                      {/* <DropdownItem tag='a' onClick={() => toast.warning("COMING SOON")}>
                         Pdf
-                      </DropdownItem>
+                      </DropdownItem> */}
                     </DropdownMenu>
                   </UncontrolledButtonDropdown>
                 </Col>

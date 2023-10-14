@@ -7,6 +7,7 @@
     b {
         font-size: 16px;
     }
+    @page { size: auto; size: A4 portrait; }
 </style>
 
 <head>
@@ -51,11 +52,6 @@
                 </td>
             </tr>
             <tr>
-                <td width="302"></td>
-                <td width="343"></td>
-                <td width="339"></td>
-            </tr>
-            <tr>
                 <td colspan="3"><b>Registrasi Calon Peserta Didik</b></td>
             </tr>
             <tr>
@@ -80,27 +76,27 @@
                             <tr>
                                 <td>Tanggal Pendaftaran</td>
                                 <td>:</td>
-                                <td>{{$biodata->tanggal_daftar}}</td>
+                                <td>{{$biodata->tanggal_daftar != null || $biodata->tanggal_daftar != "" ? $biodata->tanggal_daftar : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Pilihan I</td>
                                 <td>:</td>
-                                <td>{{$biodata->pilihan_ii}}</td>
+                                <td>{{$biodata->pilihan_i != null || $biodata->pilihan_i != "" ? $biodata->pilihan_i : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Pilihan II</td>
                                 <td>:</td>
-                                <td>{{$biodata->pilihan_ii}}</td>
+                                <td>{{$biodata->pilihan_ii != null || $biodata->pilihan_ii != "" ? $biodata->pilihan_ii : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Nama Sekolah Asal</td>
                                 <td>:</td>
-                                <td>{{$biodata->asal_sekolah}}</td>
+                                <td>{{$biodata->asal_sekolah != null || $biodata->asal_sekolah != "" ? $biodata->asal_sekolah : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Alamat Sekolah Asal</td>
                                 <td>:</td>
-                                <td>{{$biodata->alamat_asal_sekolah}}</td>
+                                <td>{{$biodata->alamat_asal_sekolah != null || $biodata->alamat_asal_sekolah != "" ? $biodata->alamat_asal_sekolah : "-"}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -121,42 +117,42 @@
                             <tr>
                                 <td style="width: 150px;">Nama Lengkap</td>
                                 <td style="width: 20px;">:</td>
-                                <td>{{$biodata->name}}</td>
+                                <td>{{$biodata->name != null || $biodata->name != "" ? $biodata->name : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>
                                 <td>:</td>
-                                <td>{{$biodata->jenis_kelamin}}</td>
+                                <td>{{$biodata->jenis_kelamin != null || $biodata->jenis_kelamin != "" ? $biodata->jenis_kelamin : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>NISN</td>
                                 <td>:</td>
-                                <td>{{$biodata->nisn}}</td>
+                                <td>{{$biodata->nisn != null || $biodata->nisn != "" ? $biodata->nisn : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>NIK</td>
                                 <td>:</td>
-                                <td>{{$biodata->nik}}</td>
+                                <td>{{$biodata->nik != null || $biodata->nik != "" ? $biodata->nik : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Tempat Lahir</td>
                                 <td>:</td>
-                                <td>{{$biodata->tempat_lahir}}</td>
+                                <td>{{$biodata->tempat_lahir != null || $biodata->tempat_lahir != "" ? $biodata->tempat_lahir : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Tanggal Lahir</td>
                                 <td>:</td>
-                                <td>{{$biodata->tanggal_lahir}}</td>
+                                <td>{{$biodata->tanggal_lahir != null || $biodata->tanggal_lahir != "" ? $biodata->tanggal_lahir : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Agama</td>
                                 <td>:</td>
-                                <td>{{$biodata->agama}}</td>
+                                <td>{{$biodata->agama != null || $biodata->agama != "" ? $biodata->agama : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Kebutuhan Khusus</td>
                                 <td>:</td>
-                                <td>{{$biodata->kebutuhan_khusus}}</td>
+                                <td>{{$biodata->kebutuhan_khusus != null || $biodata->kebutuhan_khusus != "" ? $biodata->kebutuhan_khusus : "-"}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -177,47 +173,47 @@
                             <tr>
                                 <td style="width: 150px">Alamat Jalan</td>
                                 <td style="width: 21px;">:</td>
-                                <td>{{$biodata->alamat}}</td>
+                                <td>{{$biodata->alamat != null || $biodata->alamat != "" ? $biodata->alamat : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>RT</td>
                                 <td>:</td>
-                                <td>{{$biodata->rt}}</td>
+                                <td>{{$biodata->rt != null || $biodata->rt != "" ? $biodata->rt : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>RW</td>
                                 <td>:</td>
-                                <td>{{$biodata->rw}}</td>
+                                <td>{{$biodata->rw != null || $biodata->rw != "" ? $biodata->rw : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Dusun</td>
                                 <td>:</td>
-                                <td>{{$biodata->dusun}}</td>
+                                <td>{{$biodata->dusun != null || $biodata->dusun != "" ? $biodata->dusun : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Kelurahan / Desa</td>
                                 <td>:</td>
-                                <td>{{$biodata->kelurahan}}</td>
+                                <td>{{$biodata->kelurahan != null || $biodata->kelurahan != "" ? $biodata->kelurahan : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Kecamatan</td>
                                 <td>:</td>
-                                <td>{{$biodata->kecamatan}}</td>
+                                <td>{{$biodata->kecamatan != null || $biodata->kecamatan != "" ? $biodata->kecamatan : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Kota / Kabupaten</td>
                                 <td>:</td>
-                                <td>{{$biodata->kota}}</td>
+                                <td>{{$biodata->kota != null || $biodata->kota != "" ? $biodata->kota : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Kode Pos</td>
                                 <td>:</td>
-                                <td>{{$biodata->kode_pos}}</td>
+                                <td>{{$biodata->kode_pos != null || $biodata->kode_pos != "" ? $biodata->kode_pos : "-"}}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
                                 <td>:</td>
-                                <td>{{$biodata->email}}</td>
+                                <td>{{$biodata->email != null || $biodata->email != "" ? $biodata->email : "-"}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -226,7 +222,7 @@
             <tr>
                 <td colspan="3" height="50" valign="top">
                     <div align="justify">
-                        <pre><span>Saya yang bertandatangan dibawah ini menyatakan bahwa data yang tertera diatas adalah yang sebenarnya.</span></pre>
+                        <div style="font-size: 14px;">Saya yang bertandatangan dibawah ini menyatakan bahwa data yang tertera diatas adalah yang sebenarnya.</div>
                     </div>
                 </td>
             </tr>
@@ -239,7 +235,7 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <center>{{$biodata->name}}</center>
+                    <center>{{$biodata->name != null || $biodata->name != "" ? $biodata->name : "-"}}</center>
                 </td>
             </tr>
             <tr>
@@ -250,7 +246,7 @@
             <tr>
                 <td colspan="3">
                     <b>Info Pembayaran Pendaftaran :</b><br>
-                    <b>Nama : {{$biodata->name}}</b><br>
+                    <b>Nama : {{$biodata->name != null || $biodata->name != "" ? $biodata->name : "-"}}</b><br>
                     <b>Total Biaya Pendaftaran <span style="color: red;">Rp. {{number_format($biaya->biaya_pendaftaran,0,',','.')}} </span> (Total transfer harus
                         sama)</b><br>
                 </td>
@@ -276,8 +272,8 @@
                         Pembayaran bisa langsung di sekolah atau transfer ke : <br />
                         <b>Nomor Rekening</b><br />
                         BANK SYARIAH INDONESIA ex BNIS <br />
-                        No : <b>5612225617</b> <br />
-                        <b>A.n. Yayasan Al Kautsar 561</b> <br />
+                        No : <b>7972516720</b> <br />
+                        <b>A.n. SMP IT Hayatan Thayyibah</b> <br />
                         <!-- **lembar pendaftaran ini beserta konfirmasi pembayaran bisa di kirimkan ke : 08112349561 <br /> -->
                     </center>
                 </td>

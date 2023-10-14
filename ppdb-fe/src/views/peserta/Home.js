@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Col, Row } from 'reactstrap'
+import { Button, Col, Row } from 'reactstrap'
 import * as Icon from 'react-feather'
 import StatsVertical from '@components/widgets/stats/StatsVertical'
 import { get } from "../../configs/apiService"

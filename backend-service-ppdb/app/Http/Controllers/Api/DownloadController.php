@@ -14,8 +14,8 @@ class DownloadController extends Controller
     {
       $this->DownloadServices = $DownloadServices;
     }
-    public function index () 
+    public function index (Request $request) 
     {
-        return $this->DownloadServices->index();
+        return $this->DownloadServices->index($request);
     }
 }
