@@ -375,7 +375,7 @@ class PesertaServices
         $this->PesertaRepository->updateByUserId($cekPeserta->id, $update);
         $mailData = [
           'title' => 'SMP IT Hayatan Thayyibah',
-          'url' => env('FRONTENDURL')."/change-password?".$token,
+          'url' => env('FRONTENDURL', 'https://peserta.smpithayatanthayyibah.sch.id')."/change-password?".$token,
           'namaUser' => $cekPeserta->name
         ];
         Mail::to($cekPeserta->email)->send(new DemoMail($mailData));
