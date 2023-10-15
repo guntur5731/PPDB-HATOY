@@ -343,7 +343,8 @@ class PesertaServices
   public function downloadPeserta($request)
   {
       $title = "Export Peserta";
-      session(['reqData' => $request->type]);
+      session(['startDate' => $request->startDate]);
+      session(['endDate' => $request->endDate]);
       if ($request->type === "hMOyFkfc8jKmu5aJkHmj/A==") {
         return Excel::download(new ExportAssemblerExportSiswa, 'peserta.xlsx');
       } else if ($request->type === "V7oI9liYiTE7PqQX7QAVug==") {

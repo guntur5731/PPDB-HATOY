@@ -22,7 +22,7 @@
                 <td style="word-wrap: break-word; text-align: center; font-weight: bold; font-size: 16px;" colspan='{{ sizeof($colums) }}'>{{ $title }}</td>
             </tr>
             <tr>
-                <td colspan='{{ sizeof($colums) }}'></td>
+                <td colspan='{{ sizeof($colums) }}'>Tanggal Export {{date('Y-m-d H:i:s')}}</td>
             </tr>
             <tr>
                 <td colspan='{{ sizeof($colums) }}'></td>
@@ -46,7 +46,7 @@
                 <td style="word-wrap: break-word;">Gelombang {{ $dt->gelombang }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->nisn }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->asal_sekolah }}</td>
-                <td style="word-wrap: break-word;">{{ $dt->nik }}</td>
+                <td style="word-wrap: break-word;">{{ $dt->nik != null ? strval($dt->nik) : "-" }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->namaLengkap }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->jenis_kelamin }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->tempat_lahir }}, {{ $dt->tanggal_lahir }}</td>
@@ -61,6 +61,7 @@
                 <td style="word-wrap: break-word;">{{ $dt->alamat }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->rt }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->rw }}</td>
+                <td style="word-wrap: break-word;">{{ $dt->dusun }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->kelurahan }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->kecamatan }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->kota }}</td>

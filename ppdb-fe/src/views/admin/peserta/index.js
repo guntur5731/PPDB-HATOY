@@ -13,12 +13,16 @@ import "jspdf-autotable"
 import { toast } from 'react-toastify'
 import { useHistory } from 'react-router-dom'
 import myTemplate from '../../../utility/TEMPLATE_UPLOAD_SISWA.xlsx'
+import Flatpickr from 'react-flatpickr'
+import '@styles/react/libs/flatpickr/flatpickr.scss'
+import moment from 'moment'
 
 export default function index() {
   const history = useHistory()
   const [searchValue, setSearchValue] = useState("")
   const [filteredData, setFilteredData] = useState([])
   const [centeredModal, setCenteredModal] = useState(false)
+  const [centeredModalDownload, setCenteredModalDownload] = useState(false)
   const [files, setFile] = useState()
   const colums = [
     {
@@ -71,7 +75,7 @@ export default function index() {
       sortable: true,
       width: '170px',
       cell: row => (<div style={{ wordWrap: 'break-word', marginTop: "1px", marginBottom: "1px" }}>
-        {row.statusBiodata === 1 ? <>
+        {row.statusBiodata === 1 || row.statusBiodata === "1" ? <>
           <Badge color='success' style={{ margin: "0.5px" }}>
             <Icon.Check size={12} className='align-middle me-25' />
             <span className='align-middle ms-25'>Biodata</span>
@@ -82,7 +86,7 @@ export default function index() {
             <span className='align-middle ms-25'>Biodata</span>
           </Badge>
         </>}
-        {row.statusDataKeluarga === 1 ? <>
+        {row.statusDataKeluarga === 1 || row.statusDataKeluarga === "1" ? <>
           <Badge color='success' style={{ margin: "0.5px" }}>
             <Icon.Check size={12} className='align-middle me-25' />
             <span className='align-middle ms-25'>Data Keluarga</span>
@@ -93,7 +97,7 @@ export default function index() {
             <span className='align-middle ms-25'>Data Keluarga</span>
           </Badge>
         </>}
-        {row.statusAlamat === 1 ? <>
+        {row.statusAlamat === 1 || row.statusAlamat === "1" ? <>
           <Badge color='success' style={{ margin: "0.5px" }}>
             <Icon.Check size={12} className='align-middle me-25' />
             <span className='align-middle ms-25'>Data Alamat</span>
@@ -104,7 +108,7 @@ export default function index() {
             <span className='align-middle ms-25'>Data Alamat</span>
           </Badge>
         </>}
-        {row.statusBerkas === 1 ? <>
+        {row.statusBerkas === 1 || row.statusBerkas === "1" ? <>
           <Badge color='success' style={{ margin: "0.5px" }}>
             <Icon.Check size={12} className='align-middle me-25' />
             <span className='align-middle ms-25'>Berkas</span>
@@ -192,6 +196,10 @@ export default function index() {
   const [loadingPreview, serLoadingPreview] = useState(false)
   const [loadingSubmit, setLoadingSubmit] = useState(false)
   const [validasiUpload, setValidasiUpload] = useState("")
+  const [rangeTanggal, setRangTanggal] = useState({
+    startDate: new Date(),
+    endDate : new Date()
+  })
 
   const getListPeserta = () => {
     setLoading(true)
@@ -381,6 +389,10 @@ export default function index() {
   const handleRowClick = (row) => {
     history.push("/biodata", { userData: row })
   }
+  const handleDownloadData = () => {
+    console.log(rangeTanggal)
+    window.open(`${BASE_API_IMAGE}${downloadPeserta}?type=${CODE_EXPORT_EXCEL}&startDate=${moment(rangeTanggal.startDate).format("YYYY-MM-DD")}&endDate=${moment(rangeTanggal.endDate).format("YYYY-MM-DD")}`)
+  }
 
   return (
     <div>
@@ -396,6 +408,7 @@ export default function index() {
               <Row>
                 <Col className='mt-1' md='6' sm='12'>
                   <Button size='sm' color='success' onClick={() => setCenteredModal(!centeredModal)}>Upload</Button>
+                  <Button size='sm' color='info' style={{ marginLeft: "2px" }} onClick={() => setCenteredModalDownload(!centeredModalDownload)}>Download</Button>
 
                   <UncontrolledButtonDropdown size='sm' style={{ marginLeft: "10px" }}>
                     <DropdownToggle color='info' caret>
@@ -485,6 +498,65 @@ export default function index() {
               {loadingSubmit ? <><Spinner size={"sm"} /> Loading</> : "Upload"}
             </Button>
           }
+        </ModalFooter>
+      </Modal>
+      <Modal backdrop="static" isOpen={centeredModalDownload} size={'lg'}
+        toggle={() => {
+          if (!loadingPreview && !loadingSubmit) {
+            setCenteredModalDownload(!centeredModalDownload)
+          }
+        }}
+        className='modal-dialog-centered'>
+        <ModalHeader toggle={() => {
+          if (!loadingPreview && !loadingSubmit) {
+            setCenteredModalDownload(!centeredModalDownload)
+          }
+        }
+        }
+        >Download Data Peserta</ModalHeader>
+        <ModalBody>
+          <Row>
+            <Col md="6" sm="12">
+              <Label>Tanggal Mulai</Label>
+              <Flatpickr
+                className={`form-control`}
+                id='default-picker'
+                options={{
+                  dateFormat: 'd-M-Y',
+                  maxDate: new Date()
+                }}
+                onChange={(date) => {
+                  setRangTanggal({
+                    ...rangeTanggal,
+                    startDate: new Date(date)
+                  })
+                }}
+              />
+            </Col>
+            <Col md="6" sm="12">
+              <Label>Tanggal Selesai</Label>
+              <Flatpickr
+                className={`form-control`}
+                id='default-picker'
+                options={{
+                  dateFormat: 'd-M-Y',
+                  minDate: rangeTanggal.startDate,
+                  maxDate: new Date()
+                }}
+                onChange={(date) => {
+                  setRangTanggal({
+                    ...rangeTanggal,
+                    endDate: new Date(date)
+                  })
+                }}
+              />
+            </Col>
+          </Row>
+        </ModalBody>
+        <ModalFooter>
+            <Button color='success' disabled={loadingSubmit} onClick={() => handleDownloadData()}>
+              {loadingSubmit ? <><Spinner size={"sm"} /> Loading</> : "Download Daftar Peserta"}
+            </Button>
         </ModalFooter>
       </Modal>
     </div>

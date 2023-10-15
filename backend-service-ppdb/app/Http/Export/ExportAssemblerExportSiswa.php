@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class ExportAssemblerExportSiswa implements FromView
 {
@@ -19,8 +20,9 @@ class ExportAssemblerExportSiswa implements FromView
 
     public function view(): View
     {
-        dd(session('reqData'));
-        $title = "Export Peserta";
+        // dd(Carbon::createFromFormat('Y-m-d h:i:s', '2021-06-30'));
+        // dd((session('startDate'))." 00:00:00");
+        $title = "Export Peserta Didik Baru";
         $cek = $this->queryPeserta();
 
         $colums = array(
@@ -43,6 +45,7 @@ class ExportAssemblerExportSiswa implements FromView
             "ALAMAT",
             "RT",
             "RW",
+            "DUSUN",
             "KELURAHAN/DESA",
             "KECAMATAN",
             "KOTA/KABUPATEN",
@@ -54,16 +57,29 @@ class ExportAssemblerExportSiswa implements FromView
 
     public function queryPeserta()
     {
-        return DB::table("users")
-            ->select(
-                "users.id_registrasi as noRegistrasi",
-                "users.nisn",
-                "users.gelombang",
-                "users.name as namaLengkap",
-                "biodata.*"
-            )
-            ->leftJoin('biodata', 'biodata.userUuid', '=', 'users.userUuid')
-            ->where('users.is_verifikasi', '!=', 2)
-            ->get();
+        return DB::select("SELECT
+        `users`.`id_registrasi` AS `noRegistrasi`,
+        `users`.`nisn`,
+        `users`.`gelombang`,
+        `users`.`name` AS `namaLengkap`,
+        `biodata`.* 
+    FROM
+        `users`
+        LEFT JOIN `biodata` ON `biodata`.`userUuid` = `users`.`userUuid` 
+    WHERE
+        DATE_FORMAT(users.created_at, '%Y-%m-%d' ) BETWEEN '".session('startDate')."' AND '".session('endDate')."'
+        AND `users`.`is_verifikasi` != 2");
+        // return DB::table("users")
+        //     ->select(
+        //         "users.id_registrasi as noRegistrasi",
+        //         "users.nisn",
+        //         "users.gelombang",
+        //         "users.name as namaLengkap",
+        //         "biodata.*"
+        //     )
+        //     ->leftJoin('biodata', 'biodata.userUuid', '=', 'users.userUuid')
+        //     ->whereBetween("DATE_FORMAT(users.created_at, '%Y-%m-%d' )", [session('startDate'), session('endDate')])
+        //     ->where('users.is_verifikasi', '!=', 2)
+        //     ->get();
     }
 }

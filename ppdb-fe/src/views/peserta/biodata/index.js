@@ -87,7 +87,8 @@ export default function index() {
             image: datas.photo,
             idReg: datas.id_registrasi,
             email: datas.email,
-            nisn: datas.nisn
+            nisn: datas.nisn,
+            userUuid: datas.userUuid
           })
           setUserId(datas.id)
         }
@@ -259,8 +260,8 @@ export default function index() {
     }
   }
   const donwloadBerkas = () => {
-    const usersData = getUser()
-    window.open(`${BASE_API + donwloadbiodata}?data=${usersData.usersId}`)
+    const usersData = users?.userUuid !== null ? users?.userUuid : null
+    window.open(`${BASE_API + donwloadbiodata}?data=${usersData}`)
   }
   return (
     <div>
