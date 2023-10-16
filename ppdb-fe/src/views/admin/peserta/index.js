@@ -29,7 +29,7 @@ export default function index() {
       name: 'Photo',
       sortable: true,
       selector: row => (<div className="text-truncate mb-0 p-1">
-        <Media src={`${BASE_API_IMAGE}/${row.photo}`} width={50} height={"auto"} />
+        <Media src={`${BASE_API_IMAGE}/${row.photo}`} width={50} height={"60"} style={{objectFit: "cover"}} />
       </div>)
     },
     {
@@ -410,22 +410,22 @@ export default function index() {
                   <Button size='sm' color='success' onClick={() => setCenteredModal(!centeredModal)}>Upload</Button>
                   <Button size='sm' color='info' style={{ marginLeft: "2px" }} onClick={() => setCenteredModalDownload(!centeredModalDownload)}>Download</Button>
 
-                  <UncontrolledButtonDropdown size='sm' style={{ marginLeft: "10px" }}>
+                  {/* <UncontrolledButtonDropdown size='sm' style={{ marginLeft: "10px" }}>
                     <DropdownToggle color='info' caret>
                       Download
                     </DropdownToggle>
                     <DropdownMenu>
-                      {/* <DropdownItem tag='a' onClick={() => toast.warning("COMING SOON")}>
+                      <DropdownItem tag='a' onClick={() => toast.warning("COMING SOON")}>
                         CSV
-                      </DropdownItem> */}
+                      </DropdownItem>
                       <DropdownItem tag='a' target="_blank" href={`${BASE_API_DOWNLOAD}${downloadPeserta}?type=${CODE_EXPORT_EXCEL}`}>
                         Excel
                       </DropdownItem>
-                      {/* <DropdownItem tag='a' onClick={() => toast.warning("COMING SOON")}>
+                      <DropdownItem tag='a' onClick={() => toast.warning("COMING SOON")}>
                         Pdf
-                      </DropdownItem> */}
+                      </DropdownItem>
                     </DropdownMenu>
-                  </UncontrolledButtonDropdown>
+                  </UncontrolledButtonDropdown> */}
                 </Col>
                 <Col className='d-flex align-items-center justify-content-end mt-1' md='6' sm='12'>
                   <Label className='me-1' for='search-input'>

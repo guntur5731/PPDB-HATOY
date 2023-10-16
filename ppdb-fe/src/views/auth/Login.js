@@ -164,7 +164,7 @@ const LoginCover = () => {
               </Link>
             </p>
             <p className='text-center mt-2'>
-              <Link to="#" onClick={() => location.replace("https://ppdb.smpithatoy.com")}>
+              <Link to="#" onClick={() => location.replace("http://smpithayatanthayyibah.sch.id")}>
                 <span>Kembali</span>
               </Link>
             </p>

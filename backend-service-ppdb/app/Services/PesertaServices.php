@@ -105,7 +105,7 @@ class PesertaServices
         $uuid = Auth::user()->userUuid;
         $userId = Auth::user()->id;
 
-        $checkNik = $this->PesertaRepository->checkNik($request->nik, $userId);
+        $checkNik = $this->PesertaRepository->checkNik($request->nik, $request->id);
         if($checkNik){
           $response->setCode(200);
           $response->setStatus(false);
@@ -133,6 +133,7 @@ class PesertaServices
           $peserta["jenis_kelamin"] = $request->jenisKelamin;
           $peserta['asal_sekolah'] = $request->asalSekolah;
           $peserta['alamat_asal_sekolah'] = $request->alamatAsalSekolah;
+          $peserta['npsn'] = $request->npsn;
           $peserta["users"] = $userId;
           $bio["biodata"] = 1;
         }else if($request->update == "datakeluarga"){

@@ -277,6 +277,7 @@ export default function index() {
                         src={`${BASE_API_IMAGE}/${users.image}`}
                         height="150"
                         width="150"
+                        style={{objectFit: "cover"}}
                       /></>}
                     <div className='d-flex flex-column align-items-center text-center mt-1'>
                       <div className='user-info'>
@@ -303,7 +304,7 @@ export default function index() {
                         </Button> : <Button color='warning' className='mt-1' onClick={() => setModalResetPassword(!modalResetPassword)} size={"sm"}>
                           Edit Password
                         </Button>}
-                        <Button color='info' size='sm' className='mt-1' onClick={() => donwloadBerkas()}>Download Biodata</Button>
+                        <Button color='info' size='sm' className='mt-1' onClick={() => donwloadBerkas()}>Download Kartu Daftar</Button>
                       </div>
                     </div>
                   </div>

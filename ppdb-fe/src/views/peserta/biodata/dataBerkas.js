@@ -40,9 +40,15 @@ export default function dataBerkas({ userData }) {
   const fileSelectedHandler = (evt) => {
     const reader = new FileReader()
     const file = evt.target.files[0]
+    const fileSize = Math.round(file.size / 1024)
     const formatter = (evt.target.files[0]) ? evt.target.files[0].name.substr(-4, 4) : ""
     const format = formatter.toLowerCase()
+    if (fileSize > 1512) {
+      toast.error("Berkas ukuran maximal 1 MB")
+      return
+    }
     if (format === ".jpg" || format === "jpeg" || format === ".png" || format === ".pdf") {
+      console.log("renderd")
       reader.onload = function (upload) {
         setData({
           ...data,
@@ -321,14 +327,16 @@ export default function dataBerkas({ userData }) {
           </Row>
         </CardBody>
       </Card>
-      <Modal backdrop="static" isOpen={centeredModal} toggle={() => setCenteredModal(!centeredModal)} className='modal-dialog-centered modal-xl'>
+      <Modal backdrop="static" isOpen={centeredModal} toggle={() => setCenteredModal(!centeredModal)} className='modal-dialog-centered modal-lg'>
         <ModalHeader toggle={() => setCenteredModal(!centeredModal)}>Lihat Data</ModalHeader>
         <ModalBody>
+          <div style={{margin: "auto"}}>
           {isPicture === "pdf" ? <>
             <embed sandbox="allow-download" type="application/pdf" src={`${BASE_API_IMAGE}/${valueView}`} width="100%" height="500px" />
           </> : isPicture === "jpg" || isPicture === "jpeg" || isPicture === "png" ? <>
-            <iframe type={`application/${isPicture}`} src={`${BASE_API_IMAGE}/${valueView}`} width="100%" height="500px" />
+            <iframe style={{display: "block"}} type={`application/${isPicture}`} src={`${BASE_API_IMAGE}/${valueView}`} width="100%" height="500px" />
           </> : <Label>Format Tidak Di Dukung</Label>}
+          </div>
         </ModalBody>
       </Modal>
     </Col>

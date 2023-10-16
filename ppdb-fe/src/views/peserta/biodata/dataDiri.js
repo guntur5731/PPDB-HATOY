@@ -20,7 +20,8 @@ export default function dataDiri({ userData }) {
         tempatLahir: "",
         tanggalLahir: "",
         asalSekolah: "",
-        alamatAsalSekolah: ""
+        alamatAsalSekolah: "",
+        npsn: ""
     })
     const [validation, setValidation] = useState({
         nik: "",
@@ -29,7 +30,8 @@ export default function dataDiri({ userData }) {
         tempatLahir: "",
         tanggalLahir: "",
         asalSekolah: "",
-        alamatAsalSekolah: ""
+        alamatAsalSekolah: "",
+        npsn: ""
     })
 
     const [param, setParams] = useState("")
@@ -236,6 +238,22 @@ export default function dataDiri({ userData }) {
                                 }}
                             />
                             <Label style={styles}>{validation.tempatLahir}</Label>
+                        </Col>
+                        <Col sm={12} md={12}>
+                            <Label>NPSN Sekolah <span style={{ color: "red" }}>*</span></Label>
+                            <Input type='text' value={data.npsn} placeholder='NPSN Sekolah'
+                                className={validation.npsn.length > 0 && 'is-invalid'}
+                                onChange={(e) => {
+                                    setData({
+                                        ...data,
+                                        npsn: e.target.value
+                                    })
+                                    setValidation({
+                                        ...validation,
+                                        npsn: ""
+                                    })
+                                }} />
+                            <Label style={styles}>{validation.npsn}</Label>
                         </Col>
                         <Col sm={12} md={12}>
                             <Label>Asal Sekolah <span style={{ color: "red" }}>*</span></Label>
