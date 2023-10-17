@@ -105,8 +105,8 @@ class PesertaServices
         $uuid = Auth::user()->userUuid;
         $userId = Auth::user()->id;
 
-        $checkNik = $this->PesertaRepository->checkNik($request->nik, $request->id);
-        if($checkNik){
+        $checkNik = $this->PesertaRepository->checkNik($request->nik, $request->userId);
+        if($checkNik && $request->update == "biodata"){
           $response->setCode(200);
           $response->setStatus(false);
           $response->setMessage("Nik Sudah Terdaftar");

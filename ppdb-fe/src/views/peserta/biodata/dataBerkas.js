@@ -330,13 +330,13 @@ export default function dataBerkas({ userData }) {
       <Modal backdrop="static" isOpen={centeredModal} toggle={() => setCenteredModal(!centeredModal)} className='modal-dialog-centered modal-lg'>
         <ModalHeader toggle={() => setCenteredModal(!centeredModal)}>Lihat Data</ModalHeader>
         <ModalBody>
-          <div style={{margin: "auto"}}>
+          <center>
           {isPicture === "pdf" ? <>
             <embed sandbox="allow-download" type="application/pdf" src={`${BASE_API_IMAGE}/${valueView}`} width="100%" height="500px" />
           </> : isPicture === "jpg" || isPicture === "jpeg" || isPicture === "png" ? <>
-            <iframe style={{display: "block"}} type={`application/${isPicture}`} src={`${BASE_API_IMAGE}/${valueView}`} width="100%" height="500px" />
+            <img src={`${BASE_API_IMAGE}/${valueView}`} width="50%" />
           </> : <Label>Format Tidak Di Dukung</Label>}
-          </div>
+          </center>
         </ModalBody>
       </Modal>
     </Col>

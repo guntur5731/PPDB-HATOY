@@ -42,6 +42,7 @@
             @if($listData)
             @foreach($listData as $e => $dt)
             <tr>
+                <!-- Data Peserta -->
                 <td style="word-wrap: break-word;">{{ $dt->noRegistrasi }}</td>
                 <td style="word-wrap: break-word;">Gelombang {{ $dt->gelombang }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->nisn }}</td>
@@ -50,14 +51,18 @@
                 <td style="word-wrap: break-word;">{{ $dt->namaLengkap }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->jenis_kelamin }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->tempat_lahir }}, {{ $dt->tanggal_lahir }}</td>
+                <!-- Data Keluarga -->
                 <td style="word-wrap: break-word;">{{ $dt->nama_ayah }}</td>
+                <td style="word-wrap: break-word;">{{ $dt->no_hp }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->nama_ibu }}</td>
+                <td style="word-wrap: break-word;">{{ $dt->no_hp1 }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->nama_wali }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->pekerjaan_ayah }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->pekerjaan_ibu }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->pendidikan_ayah }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->pendidikan_ibu }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->penghasilan_ortu }}</td>
+                <!-- ALAMAT -->
                 <td style="word-wrap: break-word;">{{ $dt->alamat }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->rt }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->rw }}</td>

@@ -50,6 +50,12 @@ export default function index() {
       selector: row => row.name
     },
     {
+      name: 'Jenis Kelamin',
+      sortable: true,
+      width: '145px',
+      selector: row => row.jenis_kelamin
+    },
+    {
       name: 'Email',
       sortable: true,
       width: '150px',
@@ -72,7 +78,7 @@ export default function index() {
     // },
     {
       name: 'Status Melengkapi',
-      sortable: true,
+      sortable: false,
       width: '170px',
       cell: row => (<div style={{ wordWrap: 'break-word', marginTop: "1px", marginBottom: "1px" }}>
         {row.statusBiodata === 1 || row.statusBiodata === "1" ? <>
@@ -224,17 +230,20 @@ export default function index() {
     setSearchValue(value)
     if (value.length) {
       updatedData = data.filter(item => {
+        console.log(item)
         const startsWith =
           item.id_registrasi.toLowerCase().startsWith(value.toLowerCase())
           || item.name.toLowerCase().startsWith(value.toLowerCase())
           || item.email.toLowerCase().startsWith(value.toLowerCase())
           || item.nisn.toLowerCase().startsWith(value.toLowerCase())
+          || item.jenis_kelamin?.toLowerCase().startsWith(value.toLowerCase())
 
         const includes =
           item.id_registrasi.toLowerCase().includes(value.toLowerCase())
           || item.name.toLowerCase().startsWith(value.toLowerCase())
           || item.email.toLowerCase().startsWith(value.toLowerCase())
           || item.nisn.toLowerCase().startsWith(value.toLowerCase())
+          || item.jenis_kelamin?.toLowerCase().startsWith(value.toLowerCase())
 
         if (startsWith) {
           return startsWith
@@ -391,7 +400,7 @@ export default function index() {
   }
   const handleDownloadData = () => {
     console.log(rangeTanggal)
-    window.open(`${BASE_API_IMAGE}${downloadPeserta}?type=${CODE_EXPORT_EXCEL}&startDate=${moment(rangeTanggal.startDate).format("YYYY-MM-DD")}&endDate=${moment(rangeTanggal.endDate).format("YYYY-MM-DD")}`)
+    window.open(`${BASE_API_IMAGE}/${downloadPeserta}?type=${CODE_EXPORT_EXCEL}&startDate=${moment(rangeTanggal.startDate).format("YYYY-MM-DD")}&endDate=${moment(rangeTanggal.endDate).format("YYYY-MM-DD")}`)
   }
 
   return (
@@ -407,7 +416,7 @@ export default function index() {
             <CardBody>
               <Row>
                 <Col className='mt-1' md='6' sm='12'>
-                  <Button size='sm' color='success' onClick={() => setCenteredModal(!centeredModal)}>Upload</Button>
+                  {/* <Button size='sm' color='success' onClick={() => setCenteredModal(!centeredModal)}>Upload</Button> */}
                   <Button size='sm' color='info' style={{ marginLeft: "2px" }} onClick={() => setCenteredModalDownload(!centeredModalDownload)}>Download</Button>
 
                   {/* <UncontrolledButtonDropdown size='sm' style={{ marginLeft: "10px" }}>

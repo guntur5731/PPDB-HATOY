@@ -14,6 +14,7 @@ import { detailPeserta } from '../../../configs/apiurl'
 import { toast } from 'react-toastify'
 export default function dataDiri({ userData }) {
     const [data, setData] = useState({
+        userId: "",
         nik: "",
         anakKe: "",
         jenisKelamin: "",
@@ -70,7 +71,8 @@ export default function dataDiri({ userData }) {
             data.tempatLahir === "" ||
             data.tanggalLahir === "" ||
             data.asalSekolah === "" ||
-            data.alamatAsalSekolah === "") {
+            data.alamatAsalSekolah === "" ||
+            data.npsn === "") {
             setValidation({
                 ...validation,
                 nik: data.nik === "" && "Kolom wajib diisi",
@@ -79,7 +81,8 @@ export default function dataDiri({ userData }) {
                 tempatLahir: data.tempatLahir === "" && "Kolom wajib diisi",
                 tanggalLahir: data.tanggalLahir === "" && "Kolom wajib diisi",
                 asalSekolah: data.asalSekolah === "" && "Kolom wajib diisi",
-                alamatAsalSekolah: data.alamatAsalSekolah === "" && "Kolom wajib diisi"
+                alamatAsalSekolah: data.alamatAsalSekolah === "" && "Kolom wajib diisi",
+                npsn: data.npsn === "" && "Kolom wajib diisi"
             })
         } else {
             onSubmit()
@@ -99,13 +102,15 @@ export default function dataDiri({ userData }) {
                 if (res && res.data && res.data.data) {
                     const datas = res.data.data
                     setData({
+                        userId: datas.userUuid,
                         nik: datas.nik !== null ? datas.nik : "",
                         anakKe: datas.anakke !== null ? datas.anakke : "",
                         jenisKelamin: datas.jenis_kelamin !== null ? datas.jenis_kelamin : "",
                         tempatLahir: datas.tempat_lahir !== null ? datas.tempat_lahir : "",
                         tanggalLahir: datas.tanggal_lahir !== null ? new Date(datas.tanggal_lahir) : "",
                         asalSekolah: datas.asal_sekolah !== null ? datas.asal_sekolah : "",
-                        alamatAsalSekolah: datas.alamat_asal_sekolah !== null ? datas.alamat_asal_sekolah : ""
+                        alamatAsalSekolah: datas.alamat_asal_sekolah !== null ? datas.alamat_asal_sekolah : "",
+                        npsn: datas.npsn !== null ? datas.npsn : ""
                     })
                 }
                 setLoading(false)

@@ -32,7 +32,7 @@ class PesertaRepository
     }
 
     public function checkNik($nik, $id){
-        return DB::table('biodata')->where('nik', $nik)->where('users', '!=', $id)->first();
+        return DB::table('biodata')->where('nik', $nik)->where('userUuid', '!=', $id)->first();
     }
 
     public function verifikasi($data)

@@ -35,7 +35,9 @@ class ExportAssemblerExportSiswa implements FromView
             "JENIS KELAMIN",
             "TEMPAT, TANGGAL LAHIR",
             "NAMA AYAH",
+            "NO HP AYAH",
             "NAMA IBU",
+            "NO HP IBU",
             "NAMA WALI",
             "PEKERJAAN AYAH",
             "PEKERJAAN IBU",
@@ -68,7 +70,7 @@ class ExportAssemblerExportSiswa implements FromView
         LEFT JOIN `biodata` ON `biodata`.`userUuid` = `users`.`userUuid` 
     WHERE
         DATE_FORMAT(users.created_at, '%Y-%m-%d' ) BETWEEN '".session('startDate')."' AND '".session('endDate')."'
-        AND `users`.`is_verifikasi` != 2");
+         ORDER BY id_registrasi ASC");
         // return DB::table("users")
         //     ->select(
         //         "users.id_registrasi as noRegistrasi",
