@@ -400,7 +400,7 @@ export default function index() {
   }
   const handleDownloadData = () => {
     console.log(rangeTanggal)
-    window.open(`${BASE_API_IMAGE}/${downloadPeserta}?type=${CODE_EXPORT_EXCEL}&startDate=${moment(rangeTanggal.startDate).format("YYYY-MM-DD")}&endDate=${moment(rangeTanggal.endDate).format("YYYY-MM-DD")}`)
+    window.open(`${BASE_API_IMAGE}${downloadPeserta}?type=${CODE_EXPORT_EXCEL}&startDate=${moment(rangeTanggal.startDate).format("YYYY-MM-DD")}&endDate=${moment(rangeTanggal.endDate).format("YYYY-MM-DD")}`)
   }
 
   return (
