@@ -56,6 +56,7 @@ Route::middleware('auth:sanctum')->group( function () {
         Route::post('update-bio', 'updateBio');
         Route::get('get-peserta', 'getPeserta');
         Route::get('dashboard', 'dashboard');
+        Route::get('delete', 'deletePeserta');
     });
 
     Route::controller(HomeController::class)->group(function(){

@@ -144,6 +144,10 @@ class PesertaRepository
         return DB::table('users')->where("id", $id)->first();
     }
 
+    public function cekByUuid($id){
+        return DB::table('users')->where("userUuid", $id)->first();
+    }
+
     public function getStatusBio($id)
     {
         return DB::table('tr_biodata')->where('users', $id)->first();
@@ -152,6 +156,9 @@ class PesertaRepository
     public function getKetNilaiById($id)
     {
         return DB::table('m_nilai')->where('users', $id)->first();
+    }
+    public function deletePeserta($id){
+        return DB::table('users')->where('id', $id)->delete();
     }
 
 }

@@ -78,5 +78,9 @@ class PesertaController extends Controller
     {
         return $this->PesertaServices->dashboard();
     }
+    public function deletePeserta(Request $request)
+    {
+        return $this->PesertaServices->deletePeserta($request);
+    }
     
 }

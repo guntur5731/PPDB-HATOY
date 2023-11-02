@@ -7,6 +7,8 @@ import DataDiri from './dataDiri'
 import DataAlamat from './dataAlamat'
 import DataKeluarga from './dataKeluarga'
 import DataBerkas from './dataBerkas'
+import DataLainnya from './lainnya'
+import DeleteAccount from './deleteAccount'
 import Avatar from '@components/avatar'
 import { BASE_API, BASE_API_IMAGE, getUser } from '../../../configs/config'
 import { useLocation } from 'react-router-dom'
@@ -347,6 +349,12 @@ export default function index() {
               </TabPane>
               <TabPane tabId='4'>
                 {(activeTab === 4 || activeTab === "4") && <DataBerkas userData={userData} />}
+              </TabPane>
+              <TabPane tabId='5'>
+                {(activeTab === 5 || activeTab === "5") && <DataLainnya userData={userData} />}
+              </TabPane>
+              <TabPane tabId='6'>
+                {(activeTab === 6 || activeTab === "6") && <DeleteAccount userData={userData} />}
               </TabPane>
             </TabContent>
           </Col>

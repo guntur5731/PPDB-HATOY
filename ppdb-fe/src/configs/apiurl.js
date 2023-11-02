@@ -20,6 +20,7 @@ export const downloadPeserta = "download-peserta"
 export const listpeserta = "/listpeserta"
 export const uploadpeserta = "/upload-peserta"
 export const detailUser = "/get-peserta"
+export const deletePeserta = "/delete"
 // UPLOAD
 export const uploadExcel = "/upload-file"
 export const updateBiodata = "/update-bio"

@@ -160,6 +160,15 @@ class PesertaServices
           $peserta["kota"] = $request->kota;
           $peserta["kode_pos"] = $request->kode_pos;
           $bio["alamat"] = 1;
+        }else if($request->update == "lainnya"){
+          $peserta["tinggi_badan"] = $request->tinggi_badan;
+          $peserta["berat_badan"] = $request->berat_badan;
+          $peserta["jarak_rumah"] = $request->jarak_rumah;
+          $peserta["waktu_rumah"] = $request->waktu_rumah;
+          $peserta["jumlah_saudara"] = $request->jumlah_saudara;
+          $peserta["jarak"] = $request->jarak;
+          $peserta["waktu"] = $request->waktu;
+          $bio["lainnya"] = 1;
         }else if($request->update == "berkas"){
           //akte
           if($request['akte'] && $request['akte'] != ""){
@@ -539,6 +548,25 @@ class PesertaServices
       $response->setCode(200);
       $response->setStatus(true);
       $response->setMessage("Sukses mengambil data");
+    } catch (\Exception $e) {
+      $response->setCode(500);
+      $response->setMessage($e->getMessage());
+    }
+    return $response->sendResponse();
+  }
+
+  public function deletePeserta($request)
+  {
+    $response = new Response;
+    try {
+      $user = $this->PesertaRepository->cekByUuid($request->userId);
+      if($user){
+        $delete = $this->PesertaRepository->deletePeserta($user->id);
+      }
+
+      $response->setCode(200);
+      $response->setStatus(true);
+      $response->setMessage("Sukses menghapus data");
     } catch (\Exception $e) {
       $response->setCode(500);
       $response->setMessage($e->getMessage());

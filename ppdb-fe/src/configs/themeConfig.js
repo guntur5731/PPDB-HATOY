@@ -4,7 +4,7 @@
 const themeConfig = {
   app: {
     appName: 'PPDB',
-    appLogoImage: require('@src/assets/images/logo/logo.svg').default
+    appLogoImage: require('@src/assets/images/logo/logoH.png').default
   },
   layout: {
     isRTL: false,

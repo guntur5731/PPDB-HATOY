@@ -2,7 +2,8 @@
 import { Nav, NavItem, NavLink } from 'reactstrap'
 
 // ** Icons Imports
-import { User, File, Bookmark, Link, Users, Home } from 'react-feather'
+import { User, File, Bookmark, Link, Users, Home, Trash } from 'react-feather'
+import { getUser } from '../../../configs/config'
 
 const Tabs = ({ activeTab, toggleTab }) => {
   return (
@@ -31,6 +32,20 @@ const Tabs = ({ activeTab, toggleTab }) => {
           <span className='fw-bold'>Berkas</span>
         </NavLink>
       </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '5'} onClick={() => toggleTab('5')}>
+          <File size={18} className='me-50' />
+          <span className='fw-bold'>Lainnya</span>
+        </NavLink>
+      </NavItem>
+      {getUser() && getUser().roleName === "adminadmin" &&
+        <NavItem>
+          <NavLink active={activeTab === '6'} onClick={() => toggleTab('6')}>
+            <Trash size={18} className='me-50' />
+            <span className='fw-bold'>Delete Account</span>
+          </NavLink>
+        </NavItem>
+      }
     </Nav>
   )
 }
