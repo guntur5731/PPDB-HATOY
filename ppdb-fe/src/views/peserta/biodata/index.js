@@ -47,7 +47,9 @@ export default function index() {
   const [dataProfile, setProfile] = useState({
     nama: "",
     email: "",
-    nisn: ""
+    nisn: "",
+    foto: "",
+    format: ""
   })
   const [isAdmin, setAdmin] = useState(false)
   const toggleTab = tab => {
@@ -128,7 +130,7 @@ export default function index() {
   const handleSubmit = (param) => {
     let sendData = {}
     if (param === "profile") {
-      const { nama, email, nisn } = dataProfile
+      const { nama, email, nisn, foto, format } = dataProfile
       if (isAdmin) {
         sendData = {
           param,
@@ -136,14 +138,18 @@ export default function index() {
           email,
           nisn,
           userId,
-          userUuid
+          userUuid,
+          foto,
+          format
         }
       } else {
         sendData = {
           param,
           nama,
           email,
-          nisn
+          nisn,
+          foto,
+          format
         }
       }
     } else if (param === "resetpass") {
@@ -159,7 +165,8 @@ export default function index() {
         param
       }
     }
-
+    // console.log(sendData)
+    // return
     post(updateBiodata, sendData)
       .then((res) => {
         if (res && res.data && res.data.response && res.data.response.status) {
@@ -265,6 +272,24 @@ export default function index() {
     const usersData = users?.userUuid !== null ? users?.userUuid : null
     window.open(`${BASE_API + donwloadbiodata}?data=${usersData}`)
   }
+  const fileSelectedHandlerPem = (evt) => {
+    const reader = new FileReader()
+    const file = evt.target.files[0]
+    const formatter = (evt.target.files[0]) ? evt.target.files[0].name.substr(-4, 4) : ""
+    const format = formatter.toLowerCase()
+    if (format === ".jpg" || format === "jpeg" || format === ".png" || format === ".pdf") {
+      reader.onload = function (upload) {
+        setProfile({
+          ...dataProfile,
+          foto: upload.target.result,
+          format
+        })
+      }
+      reader.readAsDataURL(file)
+    } else {
+      toast.warning("Berkas peserta format jpg, jpeg, png, pdf")
+    }
+  }
   return (
     <div>
       {users !== null &&
@@ -279,7 +304,7 @@ export default function index() {
                         src={`${BASE_API_IMAGE}/${users.image}`}
                         height="150"
                         width="150"
-                        style={{objectFit: "cover"}}
+                        style={{ objectFit: "cover" }}
                       /></>}
                     <div className='d-flex flex-column align-items-center text-center mt-1'>
                       <div className='user-info'>
@@ -293,7 +318,9 @@ export default function index() {
                           setProfile({
                             nama: users?.name,
                             email: users.email,
-                            nisn: users.nisn
+                            nisn: users.nisn,
+                            foto: "",
+                            format: ""
                           })
                           setModalProfile(!modalProfile)
                         }} className='mt-1' size={"sm"} style={{ marginRight: "1px" }}>
@@ -411,6 +438,12 @@ export default function index() {
                 }))
               }} />
               {validasiProfile.nisn.length > 0 && <Label style={{ color: "red" }}>{validasiProfile.nisn}</Label>}
+            </Col>
+            <Col sm={12} lg={12}>
+              <Label>Foto Profile</Label>
+              <Input onChange={fileSelectedHandlerPem} type='file'
+                className={``}
+                id='inputFile' name='fileInput' />
             </Col>
           </Row>
         </ModalBody>

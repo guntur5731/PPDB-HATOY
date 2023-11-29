@@ -459,6 +459,16 @@ class PesertaServices
         $update["name"] = $data["nama"];
         $update["nisn"] = $data["nisn"];
         $update["email"] = $data["email"];
+        if($data["foto"] && $data["foto"] != ""){
+          $folderPath = "images/";
+          if(!File::isDirectory($folderPath)){
+              File::makeDirectory($folderPath, 0777, true, true);
+          }
+          $fileconvert = $this->decode($request['foto'], $request['format']);
+          $files = $folderPath . uniqid() .$request['format'];
+          file_put_contents($files, $fileconvert);
+          $update["photo"] = $files;
+        }
 
         $cekemail = $this->PesertaRepository->cekEmailById($data["email"], $userId);
         if($cekemail){
