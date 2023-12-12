@@ -28,12 +28,15 @@ class ExportAssemblerExportSiswa implements FromView
         $colums = array(
             "NO REGISTRASI",
             "GELOMBANG",
+            "EMAIL",
             "NISN",
             "ASAL SEKOLAH",
             "NIK",
             "NAMA LENGKAP",
             "JENIS KELAMIN",
-            "TEMPAT, TANGGAL LAHIR",
+            "TEMPAT LAHIR ",
+            "TANGGAL LAHIR",
+            "ANAK KE",
             "NAMA AYAH",
             "NO HP AYAH",
             "NAMA IBU",
@@ -64,6 +67,7 @@ class ExportAssemblerExportSiswa implements FromView
         `users`.`nisn`,
         `users`.`gelombang`,
         `users`.`name` AS `namaLengkap`,
+        `users`.`email`,
         `biodata`.* 
     FROM
         `users`

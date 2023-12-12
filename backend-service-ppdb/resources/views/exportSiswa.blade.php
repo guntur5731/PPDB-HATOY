@@ -46,11 +46,14 @@
                 <td style="word-wrap: break-word;">{{ $dt->noRegistrasi }}</td>
                 <td style="word-wrap: break-word;">Gelombang {{ $dt->gelombang }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->nisn }}</td>
+                <td style="word-wrap: break-word;">{{ $dt->email }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->asal_sekolah }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->nik != null ? strval($dt->nik) : "-" }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->namaLengkap }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->jenis_kelamin }}</td>
-                <td style="word-wrap: break-word;">{{ $dt->tempat_lahir }}, {{ $dt->tanggal_lahir }}</td>
+                <td style="word-wrap: break-word;">{{ $dt->tempat_lahir }}</td>
+                <td style="word-wrap: break-word;">{{ $dt->tanggal_lahir }}</td>
+                <td style="word-wrap: break-word;">{{ $dt->anakke }}</td>
                 <!-- Data Keluarga -->
                 <td style="word-wrap: break-word;">{{ $dt->nama_ayah }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->no_hp }}</td>
