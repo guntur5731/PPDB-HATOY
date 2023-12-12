@@ -45,8 +45,8 @@
                 <!-- Data Peserta -->
                 <td style="word-wrap: break-word;">{{ $dt->noRegistrasi }}</td>
                 <td style="word-wrap: break-word;">Gelombang {{ $dt->gelombang }}</td>
-                <td style="word-wrap: break-word;">{{ $dt->nisn }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->email }}</td>
+                <td style="word-wrap: break-word;">{{ $dt->nisn }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->asal_sekolah }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->nik != null ? strval($dt->nik) : "-" }}</td>
                 <td style="word-wrap: break-word;">{{ $dt->namaLengkap }}</td>
