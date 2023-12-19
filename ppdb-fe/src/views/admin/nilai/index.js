@@ -60,6 +60,11 @@ export default function index() {
             selector: row => row.hasil_perhitungan
         },
         {
+            name: 'Surat Keterangan',
+            sortable: true,
+            selector: row => <>{row.files !== null && row.files !== "" ? <a href={row.files} target='_blank'><Button size='sm' color='success'>Lihat Files</Button></a> : "-"}</>
+        },
+        {
             name: 'Status Kelulusan',
             sortable: true,
             selector: row => row.status_kelulusan
@@ -70,7 +75,8 @@ export default function index() {
         nilaiAkademik: "",
         nilaiRapot: "",
         nilaiWawancara: "",
-        name: ""
+        name: "",
+        urlsSurat: ""
     })
     const [validationData, setValidationData] = useState({
         nilaiAkademik: "",
@@ -99,7 +105,7 @@ export default function index() {
 
     useEffect(() => {
         handleGetData()
-        
+
     }, [])
 
     const handleRowClick = (row) => {
@@ -109,7 +115,8 @@ export default function index() {
             name: row.name,
             nilaiRapot: row.rapor === "-" ? "" : row.rapor,
             nilaiAkademik: row.akademik === "-" ? "" : row.akademik,
-            nilaiWawancara: row.lisan === "-" ? "" : row.lisan
+            nilaiWawancara: row.lisan === "-" ? "" : row.lisan,
+            urlsSurat: row.files === null ? "" : row.files
         })
         setValidationData({
             nilaiAkademik: "",
@@ -170,95 +177,6 @@ export default function index() {
             setFilteredData(updatedData)
         }
     }
-
-    // function convertArrayOfObjectsToCSV(array) {
-    //     let result
-
-    //     const columnDelimiter = ','
-    //     const lineDelimiter = '\n'
-    //     const keys = Object.keys(data[0])
-
-    //     result = ''
-    //     result += keys.join(columnDelimiter)
-    //     result += lineDelimiter
-
-    //     array.forEach(item => {
-    //         let ctr = 0
-    //         keys.forEach(key => {
-    //             if (ctr > 0) result += columnDelimiter
-
-    //             result += item[key]
-
-    //             ctr++
-    //         })
-    //         result += lineDelimiter
-    //     })
-
-    //     return result
-    // }
-
-    // function downloadCSV(array) {
-    //     const link = document.createElement('a')
-    //     let csv = convertArrayOfObjectsToCSV(array)
-    //     if (csv === null) return
-
-    //     const filename = 'export data nilai.csv'
-
-    //     if (!csv.match(/^data:text\/csv/i)) {
-    //         csv = `data:text/csv;charset=utf-8,${csv}`
-    //     }
-
-    //     link.setAttribute('href', encodeURI(csv))
-    //     link.setAttribute('download', filename)
-    //     link.click()
-    // }
-
-    // const fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
-    // const fileExtension = ".xlsx"
-
-    // const excelDownload = () => {
-    //     return
-    //     const a = document.createElement('a')
-    //     a.href = downloadNilai
-    //     document.body.appendChild(a)
-    //     a.click()
-    //     a.remove()
-    //     return
-    //     const filename = "export data nilai"
-    //     const ws = XLSX.utils.json_to_sheet(data)
-    //     const wb = { Sheets: { data: ws }, SheetNames: ['data'] }
-
-    //     const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' })
-    //     const datas = new Blob([excelBuffer], { type: fileType })
-    //     FileSaver.saveAs(datas, filename + fileExtension)
-    // }
-
-    // const exportPDF = () => {
-    //     const unit = "pt"
-    //     const size = "A4" // Use A1, A2, A3 or A4
-    //     const orientation = "landscape" // portrait or landscape
-
-    //     const marginLeft = 40
-    //     const doc = new jsPDF(orientation, unit, size)
-
-    //     doc.setFontSize(15)
-
-    //     const title = "EXPORT DATA NILAI CALON PESERTA DIDIK"
-    //     const headers = [["NO REGISTRASI", "NISN", "NAME", "NILAI RAPOR", "NILAI WAWANCARA & BTQ", "NILAI AKADEMIK", "HASIL PERHITUNGAN", "STATUS KELULUSAN"]]
-
-    //     const datas = data.map(elt => [elt.id_registrasi, elt.nisn, elt.name, elt.rapor, elt.lisan, elt.akademik, elt.hasil_perhitungan, elt.status_kelulusan])
-
-    //     const content = {
-    //         startY: 50,
-    //         head: headers,
-    //         body: datas
-    //     }
-
-    //     doc.text(title, marginLeft, 40)
-    //     doc.autoTable(content)
-    //     doc.save("report.pdf")
-    //     excelDownload()
-    // }
 
     const uploadData = () => {
         if (files) {
@@ -347,7 +265,7 @@ export default function index() {
                                             <DropdownItem tag='a' target="_blank" href={`${BASE_API_DOWNLOAD}${downloadNilai}?type=${CODE_EXPORT_EXCEL}`}>
                                                 Excel
                                             </DropdownItem>
-                                            <DropdownItem tag='a'  onClick={() => toast.warning("COMING SOON")}>
+                                            <DropdownItem tag='a' onClick={() => toast.warning("COMING SOON")}>
                                                 Pdf
                                             </DropdownItem>
                                         </DropdownMenu>
@@ -457,6 +375,16 @@ export default function index() {
                                     })
                                 }} />
                             <Label style={styles}>{validationData.nilaiRapot}</Label>
+                        </Col>
+                        <Col md={12} sm={12}>
+                            <Label>Url Surat Keterangan</Label>
+                            <Input type='text' value={inputs.urlsSurat}
+                                onChange={(e) => {
+                                    setInputs({
+                                        ...inputs,
+                                        urlsSurat: e.target.value
+                                    })
+                                }} placeholder='http://example.com' />
                         </Col>
                     </Row>
                 </ModalBody>

@@ -12,7 +12,7 @@ class NilaiRepository
     {
         return DB::table('users')
             ->select('users.name', 'users.nisn', 'users.id_registrasi',
-            'm_nilai.rapor', 'm_nilai.lisan', 'm_nilai.akademik', 'm_nilai.hasil_perhitungan', "m_nilai.status_kelulusan")
+            'm_nilai.rapor', 'm_nilai.lisan', 'm_nilai.akademik', 'm_nilai.hasil_perhitungan', "m_nilai.status_kelulusan", "m_nilai.files")
             ->leftjoin('m_nilai', 'm_nilai.users', '=', 'users.id')
             ->where('users.is_verifikasi', '!=', 2)
             ->orderBy('users.id_registrasi', 'ASC')

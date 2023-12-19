@@ -2,9 +2,9 @@
 import PropTypes from 'prop-types'
 
 // ** Reactstrap Imports
-import { Card, CardBody } from 'reactstrap'
+import { Button, Card, CardBody } from 'reactstrap'
 
-const StatsVertical = ({ icon, color, stats, statTitle, className }) => {
+const StatsVertical = ({ icon, color, stats, statTitle, className, files }) => {
   return (
     <Card className='text-center'>
       <CardBody className={className}>
@@ -13,6 +13,7 @@ const StatsVertical = ({ icon, color, stats, statTitle, className }) => {
         </div>
         <h2 className='fw-bolder'>{stats}</h2>
         <p className='card-text line-ellipsis'>{statTitle}</p>
+        {files !== "" && <a href={files} target='_blank'><Button size='sm' color='success'>Download</Button></a>}
       </CardBody>
     </Card>
   )

@@ -31,7 +31,8 @@ const RegisterBasic = () => {
         email: "",
         password: "",
         file: "",
-        formatFile: ""
+        formatFile: "",
+        noTlp: ""
     })
 
     const [dataValidation, setDataValidation] = useState({
@@ -40,7 +41,8 @@ const RegisterBasic = () => {
         email: "",
         password: "",
         file: "",
-        formatFile: ""
+        formatFile: "",
+        noTlp: ""
     })
     const [gelombang, setGelombang] = useState("")
     const [successSend, setSuccessSend] = useState("")
@@ -52,19 +54,27 @@ const RegisterBasic = () => {
             data.nisn === "" ||
             data.email === "" ||
             data.password === "" ||
-            data.file === "") {
+            data.file === "" || data.noTlp === "") {
             setDataValidation({
                 namaPeserta: data.namaPeserta.length < 1 && "Nama Peserta harus di isi",
                 nisn: data.nisn.length < 1 ? "NISN harus di isi" : data.nisn.length < 8 && "NISN minimal 8 digit",
                 email: data.email.length < 1 && "Email harus di isi",
                 password: data.password.length < 1 && "Password harus di isi",
-                file: data.file.length < 1 && "File harus di isi"
+                file: data.file.length < 1 && "File harus di isi",
+                noTlp: data.noTlp.length < 1 && "No Telepon harus di isi"
             })
         } else {
             if (/\S+@\S+\.\S+/.test(data.email) !== true) {
                 setDataValidation({
                     ...dataValidation,
                     email: "Format email tidak sesuai"
+                })
+                return
+            }
+            if (/^\d+$/.test(data.noTlp) !== true) {
+                setDataValidation({
+                    ...dataValidation,
+                    noTlp: "Format No Telepon tidak sesuai"
                 })
                 return
             }
@@ -88,6 +98,9 @@ const RegisterBasic = () => {
                             file: "",
                             formatFile: ""
                         })
+                        setTimeout(() => {
+                            window.location.replace("/login")
+                        }, 2000)
                     }
                     setLoading(false)
                 })
@@ -220,6 +233,29 @@ const RegisterBasic = () => {
                                         }}
                                     />
                                     <Label style={styles}>{dataValidation.email}</Label>
+                                </div>
+                                <div>
+                                    <Label className='form-label' for='register-email'>
+                                        No Telepon
+                                    </Label>
+                                    <Input value={data.noTlp} maxLength={20} type='text' id='register-telp' placeholder='08xxxx'
+                                        // className={dataValidation.email.length > 0 && 'is-invalid'}
+                                        invalid={dataValidation.noTlp.length > 0}
+                                        onChange={(e) => {
+                                            const regex = /^\d+$/
+                                            if (regex.test(e.target.value) || e.target.value.length < 1) {
+                                                setData({
+                                                    ...data,
+                                                    noTlp: e.target.value
+                                                })
+                                            }
+                                            setDataValidation({
+                                                ...dataValidation,
+                                                noTlp: ""
+                                            })
+                                        }}
+                                    />
+                                    <Label style={styles}>{dataValidation.noTlp}</Label>
                                 </div>
                                 <div>
                                     <Label className='form-label' for='register-password'>

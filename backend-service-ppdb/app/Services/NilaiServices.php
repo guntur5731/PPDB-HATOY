@@ -59,12 +59,15 @@ class NilaiServices
             $insert['hasil_perhitungan'] = $hasilPerhitungan;
             $insert['status_kelulusan'] = $hasilPerhitungan >= $minimumNilai ? "Lulus" : "Tidak Lulus";
             $insert['created_at'] = date('Y-m-d H:i:s');
+
+            $insert['files'] = $data['urlsSurat'];
             if($checkInNilai){
                 $this->NilaiRepository->update($insert, $checkPeserta->id);
             }else{
                 $insert['users'] = $checkPeserta->id;
                 $this->NilaiRepository->create($insert);
             }
+
             $response->setData($hasilPerhitungan >= $minimumNilai ? "Lulus" : "Tidak Lulus");
         }
 

@@ -66,9 +66,11 @@ class RegisterController extends Controller
                 $input['is_verifikasi'] = 0;
                 $input['gelombang'] = $gelombang->gelombang;
                 $input['gelombang_id'] = $gelombang->id_gelombang;
+                $input['telp'] = $inputs['noTlp'];
                 $user = DB::table('users')->insert($input);
 
                 $bio['userUuid'] = $input['userUuid'];
+                $bio['no_hp'] = $inputs['noTlp'];
                 $user = DB::table('biodata')->insert($bio);
 
                 $response->setStatus(true);
