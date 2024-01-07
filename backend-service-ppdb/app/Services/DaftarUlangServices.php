@@ -38,6 +38,7 @@ class DaftarUlangServices
     {
         $response = new Response;
         $userId = Auth::user()->id;
+
         $param = $this->ParamRepository->index("bukti_transfer");
         $paramlampiran1 = $this->ParamRepository->index("lampiran_1");
         $paramlampiran2 = $this->ParamRepository->index("lampiran_2");
@@ -51,13 +52,13 @@ class DaftarUlangServices
         $data["dataPembayaran"] = $this->DaftarUlangRepository->findById($userId, $param->id_params);
         $data["dataLampiran1"] = $this->DaftarUlangRepository->findById($userId, $paramlampiran1->id_params);
         $data["dataLampiran2"] = $this->DaftarUlangRepository->findById($userId, $paramlampiran2->id_params);
-        if ($countBerkas < (int) $param->value) {
+        if ($countBerkas < (int) $param->value && (Auth::user()->is_verifikasi == 1 || Auth::user()->is_verifikasi == "1")) {
             $data["buktiTransfer"] = true;
         }
-        if ($countBerkasLampiran1 < (int) $paramlampiran1->value) {
+        if ($countBerkasLampiran1 < (int) $paramlampiran1->value && (Auth::user()->is_verifikasi == 1 || Auth::user()->is_verifikasi == "1")) {
             $data["lampiran1"] = true;
         }
-        if ($countBerkasLampiran2 < (int) $paramlampiran2->value) {
+        if ($countBerkasLampiran2 < (int) $paramlampiran2->value && (Auth::user()->is_verifikasi == 1 || Auth::user()->is_verifikasi == "1")) {
             $data["lampiran2"] = true;
         }
         $response->setData($data);
