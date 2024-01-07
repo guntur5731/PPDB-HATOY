@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\NilaiController;
 use App\Http\Controllers\Api\UploadController;
 use App\Http\Controllers\Api\LandingController;
 use App\Http\Controllers\Api\DownloadController;
+use App\Http\Controllers\Api\DaftarUlangController;
 
 Route::controller(LandingController::class)->group(function(){
     Route::get('landing', 'index');
@@ -82,6 +83,15 @@ Route::middleware('auth:sanctum')->group( function () {
 
     Route::controller(UploadController::class)->group(function(){
         Route::post('upload-file', 'upload');
+    });
+
+    Route::controller(DaftarUlangController::class)->group(function(){
+        Route::get('daftar-cek', 'index');
+        Route::get('daftar-cek/{id}', 'delete');
+        Route::post('daftar-upload', 'upload');
+        Route::get('daftar-verifikasi', 'verifikasiList');
+        Route::post('daftar-verif', 'verifikasi');
+        
     });
 
 });

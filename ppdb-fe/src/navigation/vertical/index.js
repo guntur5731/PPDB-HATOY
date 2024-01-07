@@ -29,6 +29,12 @@ if (getUser() && getUser().roleName === "adminadmin") {
           navLink: '/peserta'
         },
         {
+          id: 'daftarulang',
+          title: 'Daftar Ulang',
+          icon: <Circle size={12} />,
+          navLink: '/peserta/daftar-ulang'
+        },
+        {
           id: 'datapergelombang',
           title: 'Gelombang Peserta',
           icon: <Circle size={12} />,
@@ -87,6 +93,12 @@ if (getUser() && getUser().roleName === "adminadmin") {
       title: 'Biodata',
       icon: <User size={20} />,
       navLink: '/biodata'
+    },
+    {
+      id: 'daftarulang',
+      title: 'Daftar Ulang',
+      icon: <User size={20} />,
+      navLink: '/daftar-ulang'
     }
   ]
 } 

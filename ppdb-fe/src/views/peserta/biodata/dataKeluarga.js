@@ -17,8 +17,8 @@ export default function dataKeluarga({ userData }) {
     { label: "SMA/MA/SMK", value: "SMA" },
     { label: "Diploma", value: "Diploma" },
     { label: "S1", value: "S1" },
-    { label: "S2", value: "S1" },
-    { label: "S3", value: "S1" },
+    { label: "S2", value: "S2" },
+    { label: "S3", value: "S3" },
     { label: "Lainnya", value: "Lainnya" }
   ]
   const [data, setData] = useState({

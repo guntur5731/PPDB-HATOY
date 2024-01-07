@@ -92,7 +92,8 @@ export default function index() {
             idReg: datas.id_registrasi,
             email: datas.email,
             nisn: datas.nisn,
-            userUuid: datas.userUuid
+            userUuid: datas.userUuid,
+            telp: datas.telp !== null ? datas.telp : "-"
           })
           setUserId(datas.id)
         }
@@ -114,7 +115,8 @@ export default function index() {
         image: user.photo,
         idReg: user.id_registrasi,
         email: user.email,
-        nisn: user.nisn
+        nisn: user.nisn,
+        telp: "-"
       })
       setUserData(user)
       const paramss = {
@@ -356,6 +358,10 @@ export default function index() {
                     <li className='mb-75'>
                       <span className='fw-bolder me-25'>NISN:</span>
                       <span>{users?.nisn}</span>
+                    </li>
+                    <li className='mb-75'>
+                      <span className='fw-bolder me-25'>No Telp:</span>
+                      <span>{users?.telp}</span>
                     </li>
                   </ul>
                 </div>

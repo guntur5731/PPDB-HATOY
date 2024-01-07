@@ -32,6 +32,10 @@ const Admin = [
         component: lazy(() => import('../../views/admin/gelombang/jmlPerGeolbang'))
     },
     {
+        path: '/peserta/daftar-ulang',
+        component: lazy(() => import('../../views/admin/daftarulang/list'))
+    },
+    {
         path: '/landing-slide',
         component: lazy(() => import('../../views/admin/slide'))
     },

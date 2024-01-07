@@ -161,4 +161,9 @@ class PesertaRepository
         return DB::table('users')->where('id', $id)->delete();
     }
 
+    public function verifyDaftarUlang($data, $status)
+    {
+        return DB::table('biodata')->whereIn("userUuid",$data)->update($status);
+    }
+
 }
