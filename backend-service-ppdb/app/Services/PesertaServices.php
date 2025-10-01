@@ -174,21 +174,21 @@ class PesertaServices
           if($request['akte'] && $request['akte'] != ""){
             $akteConvert = $this->decode($request['akte'], $request['formatakte']);
             $fileakte = $folderPath . uniqid() .$request['formatakte'];
-            file_put_contents($fileakte, $akteConvert);
+            file_put_contents(public_path($fileakte), $akteConvert);
             $peserta["akte"] = $fileakte;
           }
           //kk
           if($request['kartu_kk'] && $request['kartu_kk'] != ""){
             $kkConvert = $this->decode($request['kartu_kk'], $request['formatkk']);
             $fileKK = $folderPath . uniqid() .$request['formatkk'];
-            file_put_contents($fileKK, $kkConvert);
+            file_put_contents(public_path($fileKK), $kkConvert);
             $peserta["kartu_kk"] = $fileKK;
           }
           //pembayaran
           if($request['bk_pembayaran'] && $request['bk_pembayaran'] != ""){
             $pemConvert = $this->decode($request['bk_pembayaran'], $request['fotmatpembayaran']);
             $filepem = $folderPath . uniqid() .$request['fotmatpembayaran'];
-            file_put_contents($filepem, $pemConvert);
+            file_put_contents(public_path($filepem), $pemConvert);
             $peserta["bk_pembayaran"] = $filepem;
           }
           $bio["berkas"] = 1;

@@ -1,0 +1,25 @@
+[10-Oct-2023 17:27:31 UTC] PHP Warning:  require(/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34
+[10-Oct-2023 17:27:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34
+[10-Oct-2023 17:27:36 UTC] PHP Warning:  require(/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34
+[10-Oct-2023 17:27:36 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34
+[10-Oct-2023 17:27:36 UTC] PHP Warning:  require(/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34
+[10-Oct-2023 17:27:36 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34
+[10-Oct-2023 17:27:38 UTC] PHP Warning:  require(/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34
+[10-Oct-2023 17:27:38 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34
+[10-Oct-2023 17:28:00 UTC] PHP Warning:  require(/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34
+[10-Oct-2023 17:28:00 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/smpithay/public_html/ppdb-services/PPDB-HATOY/backend-service-ppdb/public/index.php on line 34

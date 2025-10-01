@@ -47,7 +47,7 @@
             <tr>
                 <td valign="top" colspan="3">
                     <div align="center">
-                        <span style="font-size: medium; font-weight: bold;">Formulir Penerimaan Peserta Didik Baru Tahun 2023</span>
+                        <span style="font-size: medium; font-weight: bold;">Formulir Penerimaan Peserta Didik Baru Tahun {{$gelombang->tahun_ajaran}}/{{$gelombang->tahun_ajaran+1}}</span>
                     </div>
                 </td>
             </tr>
@@ -271,9 +271,10 @@
                     <center style="font-size: 16px;">
                         Pembayaran bisa langsung di sekolah atau transfer ke : <br />
                         <b>Nomor Rekening</b><br />
-                        BANK SYARIAH INDONESIA ex BNIS <br />
-                        No : <b>7972516720</b> <br />
-                        <b>A.n. SMP IT Hayatan Thayyibah</b> <br />
+                        Bank : Nano Syariah <br />
+                        Kode Bank : 253 <br />
+                        NoRek : <b>9933433223</b> <br />
+                        <b>A.n. SMP Islam Terpadu Hayatan Thayyibah</b> <br />
                         <!-- **lembar pendaftaran ini beserta konfirmasi pembayaran bisa di kirimkan ke : 08112349561 <br /> -->
                     </center>
                 </td>
