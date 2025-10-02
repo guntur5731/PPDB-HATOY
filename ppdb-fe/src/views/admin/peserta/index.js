@@ -230,7 +230,6 @@ export default function index() {
     setSearchValue(value)
     if (value.length) {
       updatedData = data.filter(item => {
-        console.log(item)
         const startsWith =
           item.id_registrasi.toLowerCase().startsWith(value.toLowerCase())
           || item.name.toLowerCase().startsWith(value.toLowerCase())
@@ -240,10 +239,10 @@ export default function index() {
 
         const includes =
           item.id_registrasi.toLowerCase().includes(value.toLowerCase())
-          || item.name.toLowerCase().startsWith(value.toLowerCase())
-          || item.email.toLowerCase().startsWith(value.toLowerCase())
-          || item.nisn.toLowerCase().startsWith(value.toLowerCase())
-          || item.jenis_kelamin?.toLowerCase().startsWith(value.toLowerCase())
+          || item.name.toLowerCase().includes(value.toLowerCase())
+          || item.email.toLowerCase().includes(value.toLowerCase())
+          || item.nisn.toLowerCase().includes(value.toLowerCase())
+          || item.jenis_kelamin?.toLowerCase().includes(value.toLowerCase())
 
         if (startsWith) {
           return startsWith
