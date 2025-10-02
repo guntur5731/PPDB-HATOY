@@ -58,6 +58,9 @@ Route::middleware('auth:sanctum')->group( function () {
         Route::get('get-peserta', 'getPeserta');
         Route::get('dashboard', 'dashboard');
         Route::get('delete', 'deletePeserta');
+        Route::get('sertifikat', 'sertifikat');
+        Route::post('sertifikat', 'addSertifikat');
+        Route::patch('sertifikat', 'deleteSertifikat');
     });
 
     Route::controller(HomeController::class)->group(function(){

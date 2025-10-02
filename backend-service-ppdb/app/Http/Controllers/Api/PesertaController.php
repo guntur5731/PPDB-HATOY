@@ -82,5 +82,16 @@ class PesertaController extends Controller
     {
         return $this->PesertaServices->deletePeserta($request);
     }
-    
+    public function addSertifikat(Request $request)
+    {
+        return $this->PesertaServices->addSertifikat($request);
+    }
+    public function sertifikat(Request $request)
+    {
+        return $this->PesertaServices->sertifikat($request);
+    }
+    public function deleteSertifikat(Request $request)
+    {
+        return $this->PesertaServices->deleteSertifikat($request);
+    }
 }

@@ -18,6 +18,7 @@ import { get, post } from '../../../configs/apiService'
 import { detailUser, donwloadbiodata, updateBiodata } from '../../../configs/apiurl'
 import { toast } from 'react-toastify'
 import InputPasswordToggle from '@components/input-password-toggle'
+import Sertifikat from './sertifikat'
 const MySwal = withReactContent(Swal)
 export default function index() {
   const [activeTab, setActiveTab] = useState('1')
@@ -93,7 +94,11 @@ export default function index() {
             email: datas.email,
             nisn: datas.nisn,
             userUuid: datas.userUuid,
-            telp: datas.telp !== null ? datas.telp : "-"
+            telp: datas.telp !== null ? datas.telp : "-",
+            statusAlamat: datas.statusAlamat,
+            statusBerkas: datas.statusBerkas,
+            statusBiodata: datas.statusBiodata,
+            statusDataKeluarga: datas.statusDataKeluarga
           })
           setUserId(datas.id)
         }
@@ -335,7 +340,9 @@ export default function index() {
                         </Button> : <Button color='warning' className='mt-1' onClick={() => setModalResetPassword(!modalResetPassword)} size={"sm"}>
                           Edit Password
                         </Button>}
+                        {users.statusAlamat === 1 && users.statusBerkas === 1 && users.statusBiodata === 1 && users.statusDataKeluarga === 1 && <>
                         <Button color='info' size='sm' className='mt-1' onClick={() => donwloadBerkas()}>Download Kartu Daftar</Button>
+                        </>}
                       </div>
                     </div>
                   </div>
@@ -388,6 +395,9 @@ export default function index() {
               </TabPane>
               <TabPane tabId='6'>
                 {(activeTab === 6 || activeTab === "6") && <DeleteAccount userData={userData} />}
+              </TabPane>
+              <TabPane tabId='7'>
+                {(activeTab === 7 || activeTab === "7") && <Sertifikat userData={userData} />}
               </TabPane>
             </TabContent>
           </Col>

@@ -38,6 +38,12 @@ const Tabs = ({ activeTab, toggleTab }) => {
           <span className='fw-bold'>Lainnya</span>
         </NavLink>
       </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '7'} onClick={() => toggleTab('7')}>
+          <File size={18} className='me-50' />
+          <span className='fw-bold'>Sertifikat</span>
+        </NavLink>
+      </NavItem>
       {getUser() && getUser().roleName === "adminadmin" &&
         <NavItem>
           <NavLink active={activeTab === '6'} onClick={() => toggleTab('6')}>

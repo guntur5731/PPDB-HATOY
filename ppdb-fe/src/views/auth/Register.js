@@ -283,6 +283,7 @@ const RegisterBasic = () => {
                                         Foto Peserta
                                     </Label>
                                     <Input onChange={fileSelectedHandler} type='file' className={`${dataValidation.file.length > 0 && 'is-invalid'}`} id='inputFile' name='fileInput' />
+                                    <Label style={styles}>Gunakan foto selfie terbaru, wajah harus terlihat jelas.</Label>
                                     <Label style={styles}>{dataValidation.file}</Label>
                                 </div>
                                 <Button color='primary' disabled={loading} block onClick={() => hanleSubmit()}>

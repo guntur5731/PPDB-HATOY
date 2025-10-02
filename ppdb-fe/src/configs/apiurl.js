@@ -27,3 +27,5 @@ export const updateBiodata = "/update-bio"
 export const jumlahPerGelombang = "/listBygelombang"
 //Download file
 export const donwloadbiodata = "/download-file"
+
+export const sertifikat = "/sertifikat"
