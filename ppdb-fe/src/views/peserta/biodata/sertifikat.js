@@ -4,7 +4,7 @@ import { sertifikat } from '../../../configs/apiurl'
 import { toast } from 'react-toastify'
 import { get, patch, post } from '../../../configs/apiService'
 import DataTable from 'react-data-table-component'
-import { BASE_API_IMAGE } from '../../../configs/config'
+import { BASE_API_IMAGE, getUser } from '../../../configs/config'
 import * as Icon from 'react-feather'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -165,8 +165,14 @@ export default function Sertifikat({ userData }) {
       }
       setParams(params)
       getDataSertifikat(params)
-
+    } else if (getUser() && getUser().roleName === null) {
+      const params = {
+        userUuid: getUser().usersId
+      }
+      getDataSertifikat(params)
+      setParams(params)
     }
+
   }, [])
 
   return (
@@ -174,37 +180,38 @@ export default function Sertifikat({ userData }) {
       <Col md="12" sm="12">
         <Card>
           <CardHeader>
-            <CardTitle>Tambah Data Sertifikat / Prestasi</CardTitle>
+            <CardTitle>{getUser() && getUser().roleName !== "adminadmin" ? "Tambah Data Sertifikat / Prestasi" : ""}</CardTitle>
           </CardHeader>
           <CardBody>
             <Row>
-              <Col sm={12} md={6} className='mt-1'>
-                <Label>Keterangan</Label>
-                <Input type='text' placeholder='Keterangan Sertifikat / Prestasi' value={data.keterangan}
-                  className={`${validation.keterangan.length > 0 && 'is-invalid'}`}
-                  onChange={(event) => {
-                    setData({
-                      ...data,
-                      keterangan: event.target.value
-                    })
-                    setValidation({
-                      ...validation,
-                      keterangan: ""
-                    })
-                  }}
-                />
-              </Col>
-              <Col sm={12} md={6} className='mt-1'>
-                <Label>Berkas Sertifikat</Label>
-                <Input onChange={fileSelectedHandler} type='file'
+              {getUser() && getUser().roleName !== "adminadmin" && <>
+                <Col sm={12} md={6} className='mt-1'>
+                  <Label>Keterangan</Label>
+                  <Input type='text' placeholder='Keterangan Sertifikat / Prestasi' value={data.keterangan}
+                    className={`${validation.keterangan.length > 0 && 'is-invalid'}`}
+                    onChange={(event) => {
+                      setData({
+                        ...data,
+                        keterangan: event.target.value
+                      })
+                      setValidation({
+                        ...validation,
+                        keterangan: ""
+                      })
+                    }}
+                  />
+                </Col>
+                <Col sm={12} md={6} className='mt-1'>
+                  <Label>Berkas Sertifikat</Label>
+                  <Input onChange={fileSelectedHandler} type='file'
 
-                  id='inputFile' name='fileInput' />
-              </Col>
-              <Col sm={12} md={12} className='mt-1'>
-                <Button disabled={loading} onClick={() => {
-                  handleValidasi()
-                }} color='success'>{loading ? <><Spinner size={'sm'} /> Loading</> : <>Simpan</>} </Button>
-              </Col>
+                    id='inputFile' name='fileInput' />
+                </Col>
+                <Col sm={12} md={12} className='mt-1'>
+                  <Button disabled={loading} onClick={() => {
+                    handleValidasi()
+                  }} color='success'>{loading ? <><Spinner size={'sm'} /> Loading</> : <>Simpan</>} </Button>
+                </Col></>}
               {datalist.length > 0 && <>
                 <Col sm={12} md={6} className='mt-1'>
                   <CardTitle>List Sertifikat / Prestasi</CardTitle>
